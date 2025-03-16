@@ -17,10 +17,9 @@ export default [
       prettier: eslintPluginPrettier,
     },
     rules: {
-      'no-unused-vars': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      'prettier/prettier': 'error',
-      ...eslintConfigPrettier.rules,
+      'no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': 'error',
     },
   },
+  eslintConfigPrettier,
 ]

@@ -44,12 +44,14 @@
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "**/*.{ts}": [
+    "src/**/*.{js,ts,json,md}": [
       "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.{json,md}": [
       "prettier --write"
     ]
   }
