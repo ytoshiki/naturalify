@@ -24,18 +24,11 @@ export default class OpenAIClient {
     - Formality Level: ${formalityLevel}  
   
     Sentence: "${sentence}"`
-    //   - Type: ${inputType}
-    //   - Style: ${style}
-    //   - Formality Level: ${formalityLevel}
-
-    //   Keep the meaning the same but improve fluency, clarity, and naturalness. Respond only with the revised sentence.
 
     const messages = [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt },
     ]
-
-    console.log(messages)
 
     try {
       const response = await axios.post(
