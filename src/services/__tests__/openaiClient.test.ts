@@ -4,7 +4,7 @@ import OpenAIClient from '../openaiClient.js'
 
 vi.mock('axios')
 
-describe('OpenAIClient', () => {
+describe('openAIClient.ts', () => {
   const mockApiKey = 'test-api-key'
   let client: OpenAIClient
 
