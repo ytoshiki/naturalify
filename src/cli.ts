@@ -11,6 +11,8 @@ const openai = new OpenAIClient(process.env.API_KEY!);
 const history = new History();
 
 async function main() {
+  await history.initDB();
+
   const args = process.argv.slice(2);
 
   if (args.includes("--history")) {

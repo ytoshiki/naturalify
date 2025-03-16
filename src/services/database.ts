@@ -12,20 +12,26 @@ export default class Database {
 
   constructor() {
     this.db = new sqlite3.Database("naturalify.db");
-    this.setup();
+  }
+
+  async init() {
+    await this.setup();
   }
 
   private setup() {
-    this.db.run(`
-      CREATE TABLE IF NOT EXISTS history (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        inputType TEXT,
-        style TEXT,
-        original_sentence TEXT,
-        transformed_sentence TEXT,
-        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-      )
-    `);
+    return new Promise<void>((resolve, reject) => {
+      this.db.run(
+        `CREATE TABLE IF NOT EXISTS history (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          inputType TEXT,
+          style TEXT,
+          original_sentence TEXT,
+          transformed_sentence TEXT,
+          timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )`,
+        (err) => (err ? reject(err) : resolve())
+      );
+    });
   }
 
   async saveHistory(

@@ -1,10 +1,13 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm src/index.ts",
-    "watch": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "dev": "cross-env TS_NODE_TRANSPILE_ONLY=1 node --no-warnings --loader ts-node/esm src/index.ts",
+    "dev:history": "npm run dev -- --history",
+    "dev:drop-history": "npm run dev -- --drop-history",
+    "dev:watch": "nodemon --exec npm run dev",
     "build": "npx tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "axios": "^1.8.3",
@@ -23,6 +26,8 @@
     "@types/figlet": "^1.7.0",
     "@types/node": "^22.13.10",
     "@types/readline-sync": "^1.4.8",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "tsc-watch": "^6.2.1",
     "typescript": "^5.8.2"

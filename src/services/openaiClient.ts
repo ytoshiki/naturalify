@@ -15,18 +15,24 @@ export default class OpenAIClient {
     inputType: string,
     formalityLevel: string
   ): Promise<string | null> {
-    const prompt = `Your task is to make the following sentence sound more natural in English.
+    const systemPrompt =
+      "You are an expert at making English sentences sound natural and fluent.";
 
-      - Type: ${inputType}
-      - Style: ${style}
-      - Formality Level: ${formalityLevel}
+    const userPrompt = `Please improve the following sentence to make it sound more natural in English.  
+    - Type: ${inputType}  
+    - Style: ${style}  
+    - Formality Level: ${formalityLevel}  
+  
+    Sentence: "${sentence}"`;
+    //   - Type: ${inputType}
+    //   - Style: ${style}
+    //   - Formality Level: ${formalityLevel}
 
-      Keep the meaning the same but improve fluency, clarity, and naturalness. Respond only with the revised sentence.
-    `;
+    //   Keep the meaning the same but improve fluency, clarity, and naturalness. Respond only with the revised sentence.
 
     const messages = [
-      { role: "system", content: prompt },
-      { role: "user", content: sentence },
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
     ];
 
     console.log(messages);
