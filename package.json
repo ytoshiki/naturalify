@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "TS_NODE_TRANSPILE_ONLY=1 node --loader ts-node/esm src/index.ts",
+    "watch": "tsc-watch --onSuccess \"node dist/index.js\"",
+    "build": "npx tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "axios": "^1.8.3",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
+    "clipboardy": "^4.0.0",
+    "dotenv": "^16.4.7",
+    "enquirer": "^2.4.1",
+    "figlet": "^1.8.0",
+    "inquirer": "^12.5.0",
+    "ora": "^8.2.0",
+    "readline-sync": "^1.4.10",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/figlet": "^1.7.0",
+    "@types/node": "^22.13.10",
+    "@types/readline-sync": "^1.4.8",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.1",
+    "typescript": "^5.8.2"
+  }
+}
