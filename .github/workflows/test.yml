@@ -1,0 +1,28 @@
+name: Tests (vitest)
+
+on:
+  push:
+    branches:
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+      - master
+
+jobs:
+  test:
+    name: Tests (vitest)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node + install deps
+        uses: ./.github/workflows/setup-node-install
+
+      - name: 🏃‍♂️ Run Tests
+        run: npm run test
