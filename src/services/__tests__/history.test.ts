@@ -1,4 +1,3 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
 import History from '../history.js'
 
 const saveHistoryMock = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))

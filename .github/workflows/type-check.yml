@@ -1,0 +1,27 @@
+name: Type Check (tsc)
+
+on:
+  push:
+    branches:
+      - develop
+      - master
+  pull_request:
+    branches:
+      - develop
+      - master
+
+jobs:
+  type-check:
+    name: Type Check (tsc)
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Setup Node + install deps
+        uses: ./.github/workflows/setup-node-install
+
+      - name: 🏃‍♂️ Run TypeScript
+        run: npm run type-check
