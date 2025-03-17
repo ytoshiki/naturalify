@@ -7,6 +7,7 @@ import {
   MODEL,
   TEMPERATURE,
 } from '../config/env.js'
+import { RequestInput } from '../types/request.js'
 
 export default class OpenAIClient {
   constructor() {
@@ -14,26 +15,26 @@ export default class OpenAIClient {
       throw new Error('✖ Missing NATURALIFY_API_KEY in the environment.')
   }
 
-  async convertSentence(
-    sentence: string,
-    style: string,
-    inputType: string,
-    formalityLevel: string,
-  ): Promise<string | null> {
-    const systemPrompt =
-      'You are an expert at making English sentences sound natural and fluent.'
+  async convertSentence({
+    context,
+    recipient,
+    communication,
+    sentence,
+  }: RequestInput): Promise<string | null> {
+    const prompt = `
+You are helping a non-native English speaker refine their writing.  
+Rewrite the sentence naturally based on:  
 
-    const userPrompt = `Please improve the following sentence to make it sound more natural in English.
-    - Type: ${inputType}
-    - Style: ${style}
-    - Formality Level: ${formalityLevel}
-  
-    Sentence: "${sentence}"`
+- **Context**: ${context}  
+- **Recipient**: ${recipient}  
+- **Style**: ${communication}  
 
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: userPrompt },
-    ]
+Original: "${sentence}"  
+
+Respond with **only the improved sentence**, nothing else.
+`
+
+    const messages = [{ role: 'system', content: prompt }]
 
     try {
       const response = await axios.post(

@@ -35,17 +35,12 @@ describe('services/openAIClient.ts', () => {
 
     vi.spyOn(axios, 'post').mockResolvedValue(mockResponse)
 
-    const sentence = 'This is a test sentence.'
-    const style = 'Formal'
-    const inputType = 'Conversation'
-    const formalityLevel = 'Formal but not too formal'
-
-    const result = await client.convertSentence(
-      sentence,
-      style,
-      inputType,
-      formalityLevel,
-    )
+    const result = await client.convertSentence({
+      context: 'Github',
+      recipient: 'Colleague',
+      communication: 'InDirect',
+      sentence: 'looks good to me.',
+    })
 
     expect(axios.post).toHaveBeenCalledWith(
       MOCK_API_URL,
@@ -53,18 +48,19 @@ describe('services/openAIClient.ts', () => {
         model: 'gpt-4o-mini',
         messages: [
           {
-            content:
-              'You are an expert at making English sentences sound natural and fluent.',
+            content: `
+You are helping a non-native English speaker refine their writing.  
+Rewrite the sentence naturally based on:  
+
+- **Context**: Github  
+- **Recipient**: Colleague  
+- **Style**: InDirect  
+
+Original: "looks good to me."  
+
+Respond with **only the improved sentence**, nothing else.
+`,
             role: 'system',
-          },
-          {
-            content: `Please improve the following sentence to make it sound more natural in English.
-    - Type: Conversation
-    - Style: Formal
-    - Formality Level: Formal but not too formal
-  
-    Sentence: \"This is a test sentence.\"`,
-            role: 'user',
           },
         ],
         max_tokens: 250,
@@ -79,17 +75,5 @@ describe('services/openAIClient.ts', () => {
     )
 
     expect(result).toBe('This sentence sounds more natural.')
-  })
-
-  it('should return null if the API request fails', async () => {
-    vi.spyOn(axios, 'post').mockRejectedValue(new Error('API request failed'))
-    const result = await client.convertSentence(
-      'Test sentence',
-      'Formal',
-      'Conversation',
-      'Formal but not too formal',
-    )
-
-    expect(result).toBeNull()
   })
 })

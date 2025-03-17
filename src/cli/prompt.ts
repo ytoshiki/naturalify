@@ -3,80 +3,61 @@ import chalk from 'chalk'
 import { isValidEnglishSentence } from '../utils/validator.js'
 
 const promptUser = async () => {
-  console.clear()
   intro(chalk.blue('✨ Naturalify Your English Sentence ✨'))
 
-  const inputType = await select({
-    message: 'Choose the type of input:',
+  const context = await select({
+    message: '1/3: Which Context? 💻',
     options: [
-      { value: 'Conversation', label: '🗣️ Conversation' },
-      { value: 'Text', label: '✍️ Text' },
+      { value: 'Slack', label: 'Slack' },
+      { value: 'GitHub', label: 'GitHub' },
+      { value: 'SNS (Social Media)', label: 'SNS (Social Media)' },
+      { value: 'Email', label: 'Email' },
     ],
   })
 
-  if (isCancel(inputType)) {
+  if (isCancel(context)) {
     cancel('Operation cancelled.')
     process.exit(0)
   }
 
-  const style = await select({
-    message: 'Choose the style of English:',
+  const recipient = await select({
+    message: '2/3: to who? 👤',
     options: [
-      { value: 'Formal', label: '🤝 Formal' },
-      { value: 'Casual', label: '😎 Casual' },
+      { value: 'Colleague', label: 'Colleague' },
+      { value: 'Boss', label: 'Boss' },
+      { value: 'Friend', label: 'Friend' },
+      { value: 'Stranger', label: 'Stranger' },
     ],
   })
 
-  if (isCancel(style)) {
+  if (isCancel(recipient)) {
     cancel('Operation cancelled.')
     process.exit(0)
   }
 
-  let formalityLevel = null
-  if (style === 'Formal') {
-    formalityLevel = await select({
-      message: 'How formal should it be?',
-      options: [
-        {
-          value: 'Slightly formal, but friendly',
-          label: '🤝 Slightly Formal (Professional but Friendly)',
-        },
-        {
-          value: 'Formal but not too formal',
-          label: '📜 Formal (suitable for workplace communication)',
-        },
-        {
-          value: 'Formal',
-          label: '🏛️ Very Formal (Highly Polite and Diplomatic)',
-        },
-      ],
-    })
+  let communication = null
 
-    if (isCancel(formalityLevel)) {
-      cancel('Operation cancelled.')
-      process.exit(0)
-    }
-  }
+  communication = await select({
+    message: `3/3: what do you prefer`,
+    options: [
+      {
+        value: 'Direct',
+        label: 'Direct',
+      },
+      {
+        value: 'Indirect',
+        label: 'Indirect',
+      },
+      {
+        value: 'Polite',
+        label: 'Polite',
+      },
+    ],
+  })
 
-  let casualLevel = null
-
-  if (style === 'Casual') {
-    casualLevel = await select({
-      message: 'How casual should it be?',
-      options: [
-        {
-          value: 'Slightly Casual',
-          label: '💬 Slightly Casual (Friendly & Natural)',
-        },
-        { value: 'Casual', label: '😎 Casual (Everyday Conversational)' },
-        { value: 'Super Casual', label: '🍕 Super Casual (Chill & Laid-Back)' },
-      ],
-    })
-
-    if (isCancel(casualLevel)) {
-      cancel('Operation cancelled.')
-      process.exit(0)
-    }
+  if (isCancel(communication)) {
+    cancel('Operation cancelled.')
+    process.exit(0)
   }
 
   const sentence = await text({
@@ -96,7 +77,7 @@ const promptUser = async () => {
 
   outro(chalk.green('🎉 All set! Processing your sentence...'))
 
-  return { inputType, style, formalityLevel, casualLevel, sentence }
+  return { context, recipient, communication, sentence }
 }
 
 export default promptUser
