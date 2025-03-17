@@ -74,6 +74,6 @@ Respond with **only the improved sentence**, nothing else.
       },
     )
 
-    expect(result).toBe('This sentence sounds more natural.')
+    expect(result?.result).toBe('This sentence sounds more natural.')
   })
 })
