@@ -22,13 +22,12 @@ export default class HistoryCLI {
       originalSentence,
       transformedSentence,
     )
-    console.log(chalk.green('✅ History saved.'))
   }
 
   async showHistory() {
     const history = await this.historyService.show()
     if (history.length === 0) {
-      console.log(chalk.yellow('No history found.'))
+      console.log(chalk.yellow('No fistory found.'))
       return
     }
 

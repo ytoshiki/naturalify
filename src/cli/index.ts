@@ -39,9 +39,16 @@ async function handleCLIArguments() {
 
 async function processUserInput() {
   const answers = await promptUser()
+
+  const spinner = new Spinner()
+  spinner.start('⏳ Converting sentence...')
+
   const transformedSentence = await convertSentence(answers)
 
-  if (!transformedSentence) return
+  if (!transformedSentence) {
+    spinner.stop(false, '❌ Failed to convert.')
+    return null
+  }
 
   console.log(
     boxen(chalk.cyanBright(transformedSentence), {
@@ -49,6 +56,9 @@ async function processUserInput() {
       margin: 1,
     }),
   )
+
+  spinner.stop(true, '📋 Copied to clipboard!')
+  copyToClipboard(transformedSentence)
 
   await historyCli.saveHistory(
     answers.inputType,
@@ -59,23 +69,12 @@ async function processUserInput() {
 }
 
 async function convertSentence(answers: any): Promise<string | null> {
-  const spinner = new Spinner()
-  spinner.start('⏳ Converting sentence...')
-
   const result = await openai.convertSentence(
     answers.sentence,
     answers.style,
     answers.inputType,
     answers.casualLevel || answers.formalLevel,
   )
-
-  if (!result) {
-    spinner.stop(false, '❌ Failed to convert.')
-    return null
-  }
-
-  spinner.stop(true, '📋 Copied to clipboard!')
-  copyToClipboard(result)
 
   return result
 }
