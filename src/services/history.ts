@@ -1,17 +1,7 @@
-import Database from './database.js'
-import chalk from 'chalk'
-import ora from 'ora'
+import HistoryRepository from '../database/historyRepo.js'
 
 export default class History {
-  private db: Database
-
-  constructor() {
-    this.db = new Database()
-  }
-
-  async initDB() {
-    await this.db.init()
-  }
+  private historyRepo = new HistoryRepository()
 
   async save(
     inputType: string,
@@ -19,7 +9,7 @@ export default class History {
     originalSentence: string,
     transformedSentence: string,
   ) {
-    await this.db.saveHistory(
+    await this.historyRepo.saveHistory(
       inputType,
       style,
       originalSentence,
@@ -28,23 +18,10 @@ export default class History {
   }
 
   async show() {
-    const history = await this.db.getHistory()
-    console.log(chalk.bold('\n📜 Translation History:\n'))
-    history.forEach((row, index) => {
-      console.log(
-        chalk.green(`${index + 1}. ${row.inputType} | ${row.style}`) +
-          chalk.cyan(` (${row.transformed_sentence})`) +
-          '\n' +
-          chalk.gray(`Original: ${row.original_sentence}\n`),
-      )
-    })
+    return this.historyRepo.getHistory()
   }
 
   async clear() {
-    const spinner = ora(chalk.blue('⏳ Clearing history...')).start()
-
-    await this.db.dropHistory()
-
-    spinner.succeed(chalk.green('✅ History cleared.'))
+    await this.historyRepo.clearHistory()
   }
 }

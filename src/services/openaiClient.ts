@@ -1,12 +1,16 @@
 import axios from 'axios'
 import chalk from 'chalk'
+import {
+  API_KEY,
+  API_URL,
+  MAX_TOKEN,
+  MODEL,
+  TEMPERATURE,
+} from '../config/env.js'
 
 export default class OpenAIClient {
-  private apiKey: string
-
-  constructor(apiKey: string) {
-    if (!apiKey) throw new Error('❌ Missing API_KEY in .env file.')
-    this.apiKey = apiKey
+  constructor() {
+    if (!API_KEY) throw new Error('❌ Missing API_KEY in .env file.')
   }
 
   async convertSentence(
@@ -18,10 +22,10 @@ export default class OpenAIClient {
     const systemPrompt =
       'You are an expert at making English sentences sound natural and fluent.'
 
-    const userPrompt = `Please improve the following sentence to make it sound more natural in English.  
-    - Type: ${inputType}  
-    - Style: ${style}  
-    - Formality Level: ${formalityLevel}  
+    const userPrompt = `Please improve the following sentence to make it sound more natural in English.
+    - Type: ${inputType}
+    - Style: ${style}
+    - Formality Level: ${formalityLevel}
   
     Sentence: "${sentence}"`
 
@@ -32,16 +36,16 @@ export default class OpenAIClient {
 
     try {
       const response = await axios.post(
-        'https://api.openai.com/v1/chat/completions',
+        API_URL,
         {
-          model: 'gpt-4o-mini',
+          model: MODEL,
           messages: messages,
-          max_tokens: 250,
-          temperature: 1,
+          max_tokens: MAX_TOKEN,
+          temperature: TEMPERATURE,
         },
         {
           headers: {
-            Authorization: `Bearer ${this.apiKey}`,
+            Authorization: `Bearer ${API_KEY}`,
             'Content-Type': 'application/json',
           },
         },
