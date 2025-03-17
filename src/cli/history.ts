@@ -2,6 +2,7 @@ import inquirer from 'inquirer'
 import HistoryService from '../services/history.js'
 import chalk from 'chalk'
 import Spinner from '../utils/spinner.js'
+import { History } from '../types/history.js'
 
 export default class HistoryCLI {
   private historyService: HistoryService
@@ -10,18 +11,8 @@ export default class HistoryCLI {
     this.historyService = new HistoryService()
   }
 
-  async saveHistory(
-    inputType: string,
-    style: string,
-    originalSentence: string,
-    transformedSentence: string,
-  ) {
-    await this.historyService.save(
-      inputType,
-      style,
-      originalSentence,
-      transformedSentence,
-    )
+  async saveHistory(history: History) {
+    await this.historyService.save(history)
   }
 
   async showHistory() {
@@ -34,7 +25,9 @@ export default class HistoryCLI {
     console.log(chalk.bold('\n📜 Translation History:\n'))
     history.forEach((row, index) => {
       console.log(
-        chalk.cyan(`${index + 1}. ${row.inputType} | ${row.style}`) +
+        chalk.cyan(
+          `${index + 1}. ${row.context} | ${row.recipient} | ${row.communication}`,
+        ) +
           '\n' +
           chalk.gray(`Original:  ${row.original_sentence}\n`) +
           chalk.white(`Corrected: ${row.transformed_sentence}`) +

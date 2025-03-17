@@ -6,13 +6,23 @@ export async function runHistoryMigration() {
     db.run(
       `CREATE TABLE IF NOT EXISTS history (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          inputType TEXT,
-          style TEXT,
+          context TEXT,
+          recipient TEXT,
+          communication TEXT,
           original_sentence TEXT,
           transformed_sentence TEXT,
           timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )`,
       (err) => (err ? reject(err) : resolve()),
+    )
+  })
+}
+
+export async function dropHistoryTable() {
+  const db = Database.getInstance()
+  await new Promise<void>((resolve, reject) => {
+    db.run(`DROP TABLE IF EXISTS history`, (err) =>
+      err ? reject(err) : resolve(),
     )
   })
 }

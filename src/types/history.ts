@@ -1,6 +1,7 @@
 export type History = {
-  inputType: string
-  style: string
+  context: string
+  recipient: string
+  communication: string
   original_sentence: string
   transformed_sentence: string
 }

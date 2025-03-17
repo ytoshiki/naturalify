@@ -8,6 +8,7 @@ import { initializeDatabase } from '../database/migration/index.js'
 import { copyToClipboard } from '../utils/clipboard.js'
 import Spinner from '../utils/spinner.js'
 import ensureAPIKey from './apiKey.js'
+import { RequestInput, Response } from '../types/request.js'
 
 const historyCli = new HistoryCLI()
 const openai = new OpenAIClient()
@@ -47,7 +48,7 @@ async function processUserInput() {
 
   const transformedSentence = await convertSentence(answers)
 
-  if (!transformedSentence) {
+  if (!transformedSentence?.result) {
     spinner.stop(
       false,
       'Failed to convert. Please check if NATURALIFY_API_KEY is valid',
@@ -55,9 +56,9 @@ async function processUserInput() {
     return null
   }
 
-  const cleanedSentence = transformedSentence.replace(/^"|"$/g, '')
+  const cleanedSentence = transformedSentence.result.replace(/^"|"$/g, '')
 
-  spinner.stop(true, 'Done!')
+  spinner.stop(true, 'Copied to clipboard!')
 
   console.log(
     boxen(chalk.cyanBright(cleanedSentence), {
@@ -66,27 +67,24 @@ async function processUserInput() {
     }),
   )
 
-  console.log(chalk.yellow('📋 Copied to clipboard!'))
+  console.log(`tokens used: `, transformedSentence.tokens)
 
   copyToClipboard(cleanedSentence)
 
-  await historyCli.saveHistory(
-    answers.inputType,
-    answers.style,
-    answers.sentence,
-    cleanedSentence,
-  )
+  const { context, recipient, communication, sentence } = answers
+  await historyCli.saveHistory({
+    context,
+    recipient,
+    communication,
+    original_sentence: sentence,
+    transformed_sentence: cleanedSentence,
+  })
 }
 
-async function convertSentence(answers: any): Promise<string | null> {
-  const result = await openai.convertSentence(
-    answers.sentence,
-    answers.style,
-    answers.inputType,
-    answers.casualLevel || answers.formalLevel,
-  )
+async function convertSentence(answers: RequestInput): Promise<Response> {
+  const response = await openai.convertSentence(answers)
 
-  return result
+  return response
 }
 
 main().catch((err) => console.error(chalk.red(err)))

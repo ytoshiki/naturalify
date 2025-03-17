@@ -4,16 +4,23 @@ import Database from './index.js'
 export default class HistoryRepository {
   private db = Database.getInstance()
 
-  async saveHistory(
-    inputType: string,
-    style: string,
-    originalSentence: string,
-    transformedSentence: string,
-  ) {
+  async saveHistory({
+    context,
+    recipient,
+    communication,
+    original_sentence,
+    transformed_sentence,
+  }: History) {
     return new Promise<void>((resolve, reject) => {
       this.db.run(
-        `INSERT INTO history (inputType, style, original_sentence, transformed_sentence) VALUES (?, ?, ?, ?)`,
-        [inputType, style, originalSentence, transformedSentence],
+        `INSERT INTO history (context, recipient, communication, original_sentence, transformed_sentence) VALUES (?, ?, ?, ?, ?)`,
+        [
+          context,
+          recipient,
+          communication,
+          original_sentence,
+          transformed_sentence,
+        ],
         (err) => (err ? reject(err) : resolve()),
       )
     })
