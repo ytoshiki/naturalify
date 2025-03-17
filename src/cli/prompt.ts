@@ -1,80 +1,102 @@
-import inquirer from 'inquirer'
+import { intro, select, text, outro, isCancel, cancel } from '@clack/prompts'
 import chalk from 'chalk'
 import { isValidEnglishSentence } from '../utils/validator.js'
 
 const promptUser = async () => {
-  return inquirer.prompt([
-    {
-      type: 'list',
-      name: 'inputType',
-      message: 'Choose the type of input:',
-      choices: [
-        { name: chalk.yellow('Conversation 🗣️'), value: 'Conversation' },
-        { name: chalk.yellow('Text ✍️'), value: 'Text' },
-      ],
-    },
-    {
-      type: 'list',
-      name: 'style',
-      message: 'Choose the style of English:',
-      choices: [
-        { name: chalk.yellow('Formal 🤝'), value: 'Formal' },
-        { name: chalk.yellow('Casual 😎'), value: 'Casual' },
-      ],
-    },
-    {
-      type: 'list',
-      name: 'formalLevel',
+  console.clear()
+  intro(chalk.blue('✨ Naturalify Your English Sentence ✨'))
+
+  const inputType = await select({
+    message: 'Choose the type of input:',
+    options: [
+      { value: 'Conversation', label: '🗣️ Conversation' },
+      { value: 'Text', label: '✍️ Text' },
+    ],
+  })
+
+  if (isCancel(inputType)) {
+    cancel('Operation cancelled.')
+    process.exit(0)
+  }
+
+  const style = await select({
+    message: 'Choose the style of English:',
+    options: [
+      { value: 'Formal', label: '🤝 Formal' },
+      { value: 'Casual', label: '😎 Casual' },
+    ],
+  })
+
+  if (isCancel(style)) {
+    cancel('Operation cancelled.')
+    process.exit(0)
+  }
+
+  let formalityLevel = null
+  if (style === 'Formal') {
+    formalityLevel = await select({
       message: 'How formal should it be?',
-      choices: [
+      options: [
         {
-          name: 'Slightly Formal (Professional but Friendly) 🤝',
-          value: 'Slightly formal, but friendly)',
+          value: 'Slightly formal, but friendly',
+          label: '🤝 Slightly Formal (Professional but Friendly)',
         },
         {
-          name: 'Formal (suitable for workplace communication) 📜',
           value: 'Formal but not too formal',
+          label: '📜 Formal (suitable for workplace communication)',
         },
         {
-          name: 'Very Formal (Highly Polite and Diplomatic) 🏛️',
           value: 'Formal',
+          label: '🏛️ Very Formal (Highly Polite and Diplomatic)',
         },
       ],
-      when: (answers) => answers.style === 'Formal',
-    },
-    {
-      type: 'list',
-      name: 'casualLevel',
+    })
+
+    if (isCancel(formalityLevel)) {
+      cancel('Operation cancelled.')
+      process.exit(0)
+    }
+  }
+
+  let casualLevel = null
+
+  if (style === 'Casual') {
+    casualLevel = await select({
       message: 'How casual should it be?',
-      choices: [
+      options: [
         {
-          name: 'Slightly Casual (Friendly & Natural) 💬',
           value: 'Slightly Casual',
+          label: '💬 Slightly Casual (Friendly & Natural)',
         },
-        { name: 'Casual (Everyday Conversational) 😎', value: 'Casual' },
-        {
-          name: 'Super Casual (Chill & Laid-Back) 🍕',
-          value: 'Super Casual',
-        },
+        { value: 'Casual', label: '😎 Casual (Everyday Conversational)' },
+        { value: 'Super Casual', label: '🍕 Super Casual (Chill & Laid-Back)' },
       ],
-      when: (answers) => answers.style === 'Casual',
+    })
+
+    if (isCancel(casualLevel)) {
+      cancel('Operation cancelled.')
+      process.exit(0)
+    }
+  }
+
+  const sentence = await text({
+    message: 'Enter the sentence you want to naturalify:',
+    validate: (input) => {
+      if (!input.trim()) return '❌ Sentence cannot be empty'
+      if (!isValidEnglishSentence(input))
+        return '❌ Please enter the sentence in English only.'
+      return undefined
     },
-    {
-      type: 'input',
-      name: 'sentence',
-      message: 'Enter the sentence you want to naturalify:',
-      validate: (input) => {
-        if (!input.trim()) {
-          return 'Sentence cannot be empty'
-        }
-        if (!isValidEnglishSentence(input)) {
-          return 'Please enter the sentence in English only.'
-        }
-        return true
-      },
-      transformer: (input) => chalk.yellow(`${input}`),
-    },
-  ])
+  })
+
+  if (isCancel(sentence)) {
+    cancel('Operation cancelled.')
+    process.exit(0)
+  }
+
+  outro(chalk.green('🎉 All set! Processing your sentence...'))
+
+  return { inputType, style, formalityLevel, casualLevel, sentence }
 }
 
 export default promptUser
