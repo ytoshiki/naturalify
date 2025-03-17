@@ -6,7 +6,7 @@ const promptUser = async () => {
   intro(chalk.blue('✨ Naturalify Your English Sentence ✨'))
 
   const context = await select({
-    message: '1/3: Which Context? 💻',
+    message: '1/3: Choose the context 💻',
     options: [
       { value: 'Slack', label: 'Slack' },
       { value: 'GitHub', label: 'GitHub' },
@@ -21,7 +21,7 @@ const promptUser = async () => {
   }
 
   const recipient = await select({
-    message: '2/3: to who? 👤',
+    message: '2/3: Who is this message for? 🎯',
     options: [
       { value: 'Colleague', label: 'Colleague' },
       { value: 'Boss', label: 'Boss' },
@@ -38,7 +38,7 @@ const promptUser = async () => {
   let communication = null
 
   communication = await select({
-    message: `3/3: what do you prefer`,
+    message: `3/3: Choose your communication style 🗣️`,
     options: [
       {
         value: 'Direct',
@@ -61,7 +61,7 @@ const promptUser = async () => {
   }
 
   const sentence = await text({
-    message: 'Enter the sentence you want to naturalify:',
+    message: 'Enter your sentence for improvement 📜',
     validate: (input) => {
       if (!input.trim()) return '✖ Sentence cannot be empty'
       if (!isValidEnglishSentence(input))
