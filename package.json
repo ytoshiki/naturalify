@@ -1,5 +1,10 @@
 {
+  "name": "naturalify",
+  "version": "1.0.0",
   "type": "module",
+  "bin": {
+    "naturalify": "./bin/cli.js"
+  },
   "scripts": {
     "dev": "cross-env TS_NODE_TRANSPILE_ONLY=1 node --no-warnings --loader ts-node/esm src/index.ts",
     "dev:history": "npm run dev -- --history",
