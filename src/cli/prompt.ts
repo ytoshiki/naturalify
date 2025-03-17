@@ -82,9 +82,9 @@ const promptUser = async () => {
   const sentence = await text({
     message: 'Enter the sentence you want to naturalify:',
     validate: (input) => {
-      if (!input.trim()) return '❌ Sentence cannot be empty'
+      if (!input.trim()) return '✖ Sentence cannot be empty'
       if (!isValidEnglishSentence(input))
-        return '❌ Please enter the sentence in English only.'
+        return '✖ Please enter the sentence in English only.'
       return undefined
     },
   })

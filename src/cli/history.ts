@@ -34,10 +34,11 @@ export default class HistoryCLI {
     console.log(chalk.bold('\n📜 Translation History:\n'))
     history.forEach((row, index) => {
       console.log(
-        chalk.green(`${index + 1}. ${row.inputType} | ${row.style}`) +
-          chalk.cyan(` (${row.transformed_sentence})`) +
+        chalk.cyan(`${index + 1}. ${row.inputType} | ${row.style}`) +
           '\n' +
-          chalk.gray(`Original: ${row.original_sentence}\n`),
+          chalk.gray(`Original:  ${row.original_sentence}\n`) +
+          chalk.white(`Corrected: ${row.transformed_sentence}`) +
+          '\n',
       )
     })
   }
@@ -55,13 +56,13 @@ export default class HistoryCLI {
     if (confirmation.confirm) {
       const spinner = new Spinner()
 
-      spinner.start('⏳ Clearing history...')
+      spinner.start('Clearing history...')
 
       await this.historyService.clear()
 
-      spinner.stop(true, chalk.green('✅ History cleared.'))
+      spinner.stop(true, chalk.green('History cleared.'))
     } else {
-      console.log(chalk.red('❌ Operation cancelled.'))
+      console.log(chalk.red('✖ Operation cancelled.'))
     }
   }
 }
