@@ -8,7 +8,7 @@ import { initializeDatabase } from '../database/migration/index.js'
 import { copyToClipboard } from '../utils/clipboard.js'
 import Spinner from '../utils/spinner.js'
 import ensureAPIKey from './apiKey.js'
-import { RequestInput } from '../types/request.js'
+import { RequestInput, Response } from '../types/request.js'
 
 const historyCli = new HistoryCLI()
 const openai = new OpenAIClient()
@@ -48,7 +48,7 @@ async function processUserInput() {
 
   const transformedSentence = await convertSentence(answers)
 
-  if (!transformedSentence) {
+  if (!transformedSentence?.result) {
     spinner.stop(
       false,
       'Failed to convert. Please check if NATURALIFY_API_KEY is valid',
@@ -56,7 +56,7 @@ async function processUserInput() {
     return null
   }
 
-  const cleanedSentence = transformedSentence.replace(/^"|"$/g, '')
+  const cleanedSentence = transformedSentence.result.replace(/^"|"$/g, '')
 
   spinner.stop(true, 'Copied to clipboard!')
 
@@ -66,6 +66,8 @@ async function processUserInput() {
       margin: 1,
     }),
   )
+
+  console.log(`tokens used: `, transformedSentence.tokens)
 
   copyToClipboard(cleanedSentence)
 
@@ -79,10 +81,10 @@ async function processUserInput() {
   })
 }
 
-async function convertSentence(answers: RequestInput): Promise<string | null> {
-  const result = await openai.convertSentence(answers)
+async function convertSentence(answers: RequestInput): Promise<Response> {
+  const response = await openai.convertSentence(answers)
 
-  return result
+  return response
 }
 
 main().catch((err) => console.error(chalk.red(err)))

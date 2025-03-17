@@ -4,3 +4,8 @@ export type RequestInput = {
   communication: string
   sentence: string
 }
+
+export type Response = {
+  result: string
+  tokens: number
+} | null

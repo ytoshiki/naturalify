@@ -7,7 +7,7 @@ import {
   MODEL,
   TEMPERATURE,
 } from '../config/env.js'
-import { RequestInput } from '../types/request.js'
+import { RequestInput, Response } from '../types/request.js'
 
 export default class OpenAIClient {
   constructor() {
@@ -20,7 +20,7 @@ export default class OpenAIClient {
     recipient,
     communication,
     sentence,
-  }: RequestInput): Promise<string | null> {
+  }: RequestInput): Promise<Response> {
     const prompt = `
 You are helping a non-native English speaker refine their writing.  
 Rewrite the sentence naturally based on:  
@@ -53,7 +53,12 @@ Respond with **only the improved sentence**, nothing else.
         },
       )
 
-      return response.data.choices[0].message.content
+      const tokensUsed = Number(response.data.usage?.total_tokens) ?? 0
+
+      return {
+        result: response.data.choices[0].message.content,
+        tokens: tokensUsed,
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.error(chalk.red('\n✖ API Error: '), error?.message)
