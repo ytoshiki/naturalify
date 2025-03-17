@@ -1,7 +1,7 @@
 import axios from 'axios'
 import chalk from 'chalk'
 import {
-  API_KEY,
+  NATURALIFY_API_KEY,
   API_URL,
   MAX_TOKEN,
   MODEL,
@@ -10,7 +10,8 @@ import {
 
 export default class OpenAIClient {
   constructor() {
-    if (!API_KEY) throw new Error('❌ Missing API_KEY in .env file.')
+    if (!NATURALIFY_API_KEY)
+      throw new Error('✖ Missing NATURALIFY_API_KEY in the environment.')
   }
 
   async convertSentence(
@@ -45,7 +46,7 @@ export default class OpenAIClient {
         },
         {
           headers: {
-            Authorization: `Bearer ${API_KEY}`,
+            Authorization: `Bearer ${NATURALIFY_API_KEY}`,
             'Content-Type': 'application/json',
           },
         },
@@ -53,10 +54,17 @@ export default class OpenAIClient {
 
       return response.data.choices[0].message.content
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(chalk.red('❌ API Error:'))
-        console.error(`Status: ${error.response?.status}`)
-        console.error(`Data: ${JSON.stringify(error.response?.data, null, 2)}`)
+      if (error instanceof Error) {
+        console.error(chalk.red('\n✖ API Error: '), error?.message)
+        console.log(error)
+      } else {
+        if (axios.isAxiosError(error)) {
+          console.error(chalk.red('\n✖ API Error:'))
+          console.error(`Status: ${error.response?.status}`)
+          console.error(
+            `Data: ${JSON.stringify(error.response?.data, null, 2)}`,
+          )
+        }
       }
 
       return null

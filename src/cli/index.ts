@@ -7,11 +7,13 @@ import OpenAIClient from '../services/openaiClient.js'
 import { initializeDatabase } from '../database/migration/index.js'
 import { copyToClipboard } from '../utils/clipboard.js'
 import Spinner from '../utils/spinner.js'
+import ensureAPIKey from './apiKey.js'
 
 const historyCli = new HistoryCLI()
 const openai = new OpenAIClient()
 
 async function main() {
+  if (!ensureAPIKey()) return
   await initializeDatabase()
   await handleCLIArguments()
 }
@@ -27,7 +29,7 @@ async function handleCLIArguments() {
   }
 
   if (args.length > 0) {
-    console.error(chalk.red('❌ Unknown option:', args.join(' ')))
+    console.error(chalk.red('✖ Unknown option:', args.join(' ')))
     console.log('Available options:')
     console.log('  --history         Show translation history')
     console.log('  --drop-history    Drop the history table')
@@ -41,30 +43,38 @@ async function processUserInput() {
   const answers = await promptUser()
 
   const spinner = new Spinner()
-  spinner.start('⏳ Converting sentence...')
+  spinner.start('Converting sentence...')
 
   const transformedSentence = await convertSentence(answers)
 
   if (!transformedSentence) {
-    spinner.stop(false, '❌ Failed to convert.')
+    spinner.stop(
+      false,
+      'Failed to convert. Please check if NATURALIFY_API_KEY is valid',
+    )
     return null
   }
 
+  const cleanedSentence = transformedSentence.replace(/^"|"$/g, '')
+
+  spinner.stop(true, 'Done!')
+
   console.log(
-    boxen(chalk.cyanBright(transformedSentence), {
+    boxen(chalk.cyanBright(cleanedSentence), {
       padding: 1,
       margin: 1,
     }),
   )
 
-  spinner.stop(true, '📋 Copied to clipboard!')
-  copyToClipboard(transformedSentence)
+  console.log(chalk.yellow('📋 Copied to clipboard!'))
+
+  copyToClipboard(cleanedSentence)
 
   await historyCli.saveHistory(
     answers.inputType,
     answers.style,
     answers.sentence,
-    transformedSentence,
+    cleanedSentence,
   )
 }
 
@@ -79,4 +89,4 @@ async function convertSentence(answers: any): Promise<string | null> {
   return result
 }
 
-main().catch((err) => console.error(chalk.red('❌', err)))
+main().catch((err) => console.error(chalk.red(err)))

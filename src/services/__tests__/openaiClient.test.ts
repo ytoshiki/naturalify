@@ -8,7 +8,7 @@ vi.mock('axios')
 vi.mock('../../config/env.ts', () => {
   return {
     API_URL: MOCK_API_URL,
-    API_KEY: MOCK_API_KEY,
+    NATURALIFY_API_KEY: MOCK_API_KEY,
     MODEL: 'gpt-4o-mini',
     MAX_TOKEN: 250,
     TEMPERATURE: 1,
