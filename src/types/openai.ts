@@ -1,4 +1,4 @@
-export type RequestInput = {
+export type Request = {
   context: string
   recipient: string
   communication: string
