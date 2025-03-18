@@ -1,5 +1,4 @@
 import chalk from 'chalk'
-import 'dotenv/config'
 import boxen from 'boxen'
 import HistoryCLI from '../../../applications/historyApplication.js'
 import promptUser from '../../prompts/prompt.js'
