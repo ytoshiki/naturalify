@@ -1,4 +1,4 @@
-import History from '../history.js'
+import History from '../historyService.js'
 
 const saveHistoryMock = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
 const getHistoryMock = vi.hoisted(() =>
@@ -25,7 +25,7 @@ vi.mock('../../database/historyRepo.ts', () => {
   }
 })
 
-describe('services/history.ts', () => {
+describe('services/historyService.ts', () => {
   let history: History
 
   beforeEach(() => {

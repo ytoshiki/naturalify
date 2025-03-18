@@ -1,6 +1,6 @@
 import { intro, select, text, outro, isCancel, cancel } from '@clack/prompts'
 import chalk from 'chalk'
-import { isValidEnglishSentence } from '../utils/validator.js'
+import { isValidEnglishSentence } from '../helpers/validator.js'
 
 const promptUser = async () => {
   intro(chalk.blue('✨ Naturalify Your English Sentence ✨'))
