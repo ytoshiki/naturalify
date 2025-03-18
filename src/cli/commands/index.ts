@@ -10,49 +10,49 @@ import convertAction from './actions/convert.js'
 const initializeCommands = () => {
   program
     .command('preferences')
-    .description('Display preferences')
+    .description('Display saved text adjustment preferencess')
     .action(async () => {
       await showPreferenceAction()
     })
 
   program
     .command('set-preferences')
-    .description('Set preferences')
+    .description('Set text adjustment preferences')
     .action(async () => {
       await setPreferenceAction()
     })
 
   program
     .command('clear-preferences')
-    .description('Clear preferences')
+    .description('Clear all text adjustment preferences')
     .action(async () => {
       await clearPreferenceAction()
     })
 
   program
-    .command('convert <text>')
-    .description('Convert text into natural English based on preferences')
+    .command('adjust <text>')
+    .description('Adjust text into natural English based on preferences')
     .action(async (text: string) => {
       await convertAction(text)
     })
 
   program
     .command('history')
-    .description('Show conversion history')
+    .description('Show text adjustment history')
     .action(async () => {
       await showHistoryAction()
     })
 
   program
     .command('clear-history')
-    .description('Clear conversion history')
+    .description('CClear text adjustment history')
     .action(async () => {
       await clearHistoryAction()
     })
 
   program
     .description(
-      'naturalify - A tool to convert English sentences into natural-sounding English',
+      'naturalify - A CLI tool to adjust English sentences into more natural English',
     )
     .version('0.1.0')
     .action(async () => {

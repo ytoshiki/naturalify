@@ -10,13 +10,13 @@ async function action() {
 
   await preferenceCli.savePreference(preference)
 
-  console.log(chalk.green('\n✔ Preference saved successfully!'))
+  console.log(chalk.green('\n✔ Preferences have been saved successfully!'))
 
   console.log(
-    chalk.yellowBright('\nTo convert text with the applied preferences, use:'),
+    chalk.yellowBright('\nTo adjust text using your saved preferences, run:'),
   )
 
-  const commandBox = boxen('naturalify convert <text>', {
+  const commandBox = boxen('naturalify adjust <text>', {
     padding: 1,
     margin: 1,
     dimBorder: true,

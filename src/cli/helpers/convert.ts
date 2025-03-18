@@ -11,14 +11,14 @@ const historyCli = new HistoryCLI()
 
 async function convert(input: RequestInput) {
   const spinner = new Spinner()
-  spinner.start('Converting sentence...')
+  spinner.start('Adjusting your sentence...')
 
   const transformedSentence = await openai.convertSentence(input)
 
   if (!transformedSentence?.result) {
     spinner.stop(
       false,
-      'Failed to convert. Please check if NATURALIFY_API_KEY is valid',
+      'Adjustment failed. Please verify that your NATURALIFY_API_KEY is correct.',
     )
     return null
   }
