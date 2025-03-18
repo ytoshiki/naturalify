@@ -22,11 +22,11 @@ export default class PreferenceApplication {
 
         console.log(
           chalk.yellowBright(
-            '\nTo convert text with the applied preferences, use:',
+            '\nTo adjust text using the saved preferences, run:',
           ),
         )
 
-        const commandBox = boxen('naturalify convert <text>', {
+        const commandBox = boxen('naturalify adjust <text>', {
           padding: 1,
           margin: 1,
           dimBorder: true,
@@ -48,11 +48,11 @@ export default class PreferenceApplication {
   async showPreference() {
     const preference = await this.preferenceService.show()
     if (preference.length === 0) {
-      console.log(chalk.yellow('No preference found.'))
+      console.log(chalk.yellow('No preferences found.'))
       return
     }
 
-    console.log(chalk.bold('\n✨ Preference:\n'))
+    console.log(chalk.bold('\n✨ Preferences:\n'))
     preference.forEach((row, index) => {
       console.log(
         chalk.cyan(
@@ -67,7 +67,7 @@ export default class PreferenceApplication {
       {
         type: 'confirm',
         name: 'confirm',
-        message: 'Are you sure you want to delete all preference?',
+        message: 'Are you sure you want to delete all preferences?',
         default: false,
       },
     ])
@@ -75,11 +75,11 @@ export default class PreferenceApplication {
     if (confirmation.confirm) {
       const spinner = new Spinner()
 
-      spinner.start('Clearing preference...')
+      spinner.start('Clearing preferences...')
 
       await this.preferenceService.clear()
 
-      spinner.stop(true, chalk.green('Preference cleared.'))
+      spinner.stop(true, chalk.green('Preferences have been cleared.'))
     } else {
       console.log(chalk.red('✖ Operation cancelled.'))
     }

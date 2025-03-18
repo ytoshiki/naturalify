@@ -14,7 +14,7 @@ async function action(text: string) {
 
     await preferenceCli.savePreference(preference)
 
-    console.log(chalk.green('\n✔ Preference saved successfully!'))
+    console.log(chalk.green('\n✔ Preferences have been saved successfully!'))
 
     await convert({
       ...preference,

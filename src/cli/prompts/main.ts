@@ -61,7 +61,7 @@ const promptUser = async () => {
   }
 
   const sentence = await text({
-    message: 'Enter your sentence for improvement 📜',
+    message: 'Enter your sentence to adjust 🪄',
     validate: (input) => {
       if (!input.trim()) return '✖ Sentence cannot be empty'
       if (!isValidEnglishSentence(input))
@@ -75,7 +75,7 @@ const promptUser = async () => {
     process.exit(0)
   }
 
-  outro(chalk.green('🎉 All set! Processing your sentence...'))
+  outro(chalk.green('🎉 All set! Adjusting your sentence...'))
 
   return { context, recipient, communication, sentence }
 }

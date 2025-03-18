@@ -22,7 +22,7 @@ export default class HistoryApplication {
       return
     }
 
-    console.log(chalk.bold('\n📜 Translation History:\n'))
+    console.log(chalk.bold('\n🪄 Text Adjustment History:\n'))
     history.forEach((row, index) => {
       console.log(
         chalk.cyan(
@@ -30,7 +30,7 @@ export default class HistoryApplication {
         ) +
           '\n' +
           chalk.gray(`Original:  ${row.original_sentence}\n`) +
-          chalk.white(`Corrected: ${row.transformed_sentence}`) +
+          chalk.white(`Adjusted: ${row.transformed_sentence}`) +
           '\n',
       )
     })
@@ -53,7 +53,7 @@ export default class HistoryApplication {
 
       await this.historyService.clear()
 
-      spinner.stop(true, chalk.green('History cleared.'))
+      spinner.stop(true, chalk.green('History has been cleared.'))
     } else {
       console.log(chalk.red('✖ Operation cancelled.'))
     }
