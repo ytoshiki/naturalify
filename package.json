@@ -1,7 +1,25 @@
 {
   "name": "naturalify",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "type": "module",
+  "description": "A CLI tool that converts text to more natural English based on user preferences.",
+  "keywords": [
+    "cli",
+    "english",
+    "language",
+    "natural",
+    "ai",
+    "preferences",
+    "convert",
+    "typescript",
+    "communication"
+  ],
+  "author": "Toshiki Yoshioka",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ytoshiki/naturalify"
+  },
   "bin": {
     "naturalify": "./bin/cli.js"
   },
@@ -17,6 +35,11 @@
     "type-check": "tsc  --noemit",
     "lint": "eslint --ext .ts"
   },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "axios": "^1.8.3",
     "boxen": "^8.0.1",
@@ -52,6 +75,9 @@
     "tsc-watch": "^6.2.1",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   },
   "husky": {
     "hooks": {
