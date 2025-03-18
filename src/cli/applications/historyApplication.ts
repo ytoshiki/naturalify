@@ -18,7 +18,7 @@ export default class HistoryApplication {
   async showHistory() {
     const history = await this.historyService.show()
     if (history.length === 0) {
-      console.log(chalk.yellow('No fistory found.'))
+      console.log(chalk.yellow('No history found.'))
       return
     }
 

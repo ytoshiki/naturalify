@@ -2,35 +2,39 @@ import { program } from 'commander'
 import mainAction from './actions/main.js'
 import showHistoryAction from './actions/show-history.js'
 import clearHistoryAction from './actions/clear-history.js'
-
-async function convertCommand() {}
-
-async function prefCommand() {}
-
-async function setPrefCommand() {}
-
-async function usePrefCommand() {}
+import setPreferenceAction from './actions/set-preference.js'
+import showPreferenceAction from './actions/show_preference.js'
+import clearPreferenceAction from './actions/clear-preference.js'
+import convertAction from './actions/convert.js'
 
 const initializeCommands = () => {
   program
     .command('preferences')
-    .description('Display current preferences')
-    .action(prefCommand)
+    .description('Display preferences')
+    .action(async () => {
+      await showPreferenceAction()
+    })
 
   program
     .command('set-preferences')
-    .description('Set user preferences')
-    .action(setPrefCommand)
+    .description('Set preferences')
+    .action(async () => {
+      await setPreferenceAction()
+    })
 
   program
-    .command('use-preferences')
-    .description('Apply saved preferences for the conversion')
-    .action(usePrefCommand)
+    .command('clear-preferences')
+    .description('Clear preferences')
+    .action(async () => {
+      await clearPreferenceAction()
+    })
 
   program
     .command('convert <text>')
     .description('Convert text into natural English based on preferences')
-    .action(convertCommand)
+    .action(async (text: string) => {
+      await convertAction(text)
+    })
 
   program
     .command('history')
