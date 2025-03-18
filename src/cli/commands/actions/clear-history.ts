@@ -1,4 +1,4 @@
-import HistoryCLI from '../../../applications/historyApplication.js'
+import HistoryCLI from '../../applications/historyApplication.js'
 
 const historyCli = new HistoryCLI()
 

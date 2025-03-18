@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import boxen from 'boxen'
-import HistoryCLI from '../../../applications/historyApplication.js'
+import HistoryCLI from '../../applications/historyApplication.js'
 import promptUser from '../../prompts/prompt.js'
 import OpenAIClient from '../../../services/openaiClient.js'
 import { copyToClipboard } from '../../helpers/clipboard.js'
