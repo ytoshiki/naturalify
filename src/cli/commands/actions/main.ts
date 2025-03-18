@@ -1,4 +1,4 @@
-import promptUser from '../../prompts/prompt.js'
+import promptUser from '../../prompts/main.js'
 import convert from '../../helpers/convert.js'
 
 async function action() {
