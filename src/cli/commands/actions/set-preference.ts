@@ -1,5 +1,5 @@
 import PreferenceCLI from '../../applications/preferenceApplication.js'
-import promptPreference from '../../prompts/preferenct.js'
+import promptPreference from '../../prompts/setPreference.js'
 import chalk from 'chalk'
 import boxen from 'boxen'
 
