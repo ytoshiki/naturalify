@@ -7,7 +7,7 @@ import {
   MODEL,
   TEMPERATURE,
 } from '../config/env.js'
-import { RequestInput, Response } from '../types/request.js'
+import { Request, Response } from '../types/openai.js'
 
 export default class OpenAIClient {
   constructor() {
@@ -20,7 +20,7 @@ export default class OpenAIClient {
     recipient,
     communication,
     sentence,
-  }: RequestInput): Promise<Response> {
+  }: Request): Promise<Response> {
     const prompt = `
 You are helping a non-native English speaker refine their writing.  
 Rewrite the sentence naturally based on:  

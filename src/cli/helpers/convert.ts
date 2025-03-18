@@ -1,5 +1,5 @@
 import boxen from 'boxen'
-import { RequestInput } from '../../types/request.js'
+import { Request } from '../../types/openai.js'
 import { copyToClipboard } from './clipboard.js'
 import chalk from 'chalk'
 import Spinner from './spinner.js'
@@ -9,7 +9,7 @@ import HistoryCLI from '../applications/historyApplication.js'
 const openai = new OpenAIClient()
 const historyCli = new HistoryCLI()
 
-async function convert(input: RequestInput) {
+async function convert(input: Request) {
   const spinner = new Spinner()
   spinner.start('Adjusting your sentence...')
 
