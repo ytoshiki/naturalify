@@ -15,7 +15,7 @@ const getHistoryMock = vi.hoisted(() =>
 )
 const clearHistoryMock = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
 
-vi.mock('../../database/historyRepo.ts', () => {
+vi.mock('../../repositories/historyRepository.ts', () => {
   return {
     default: vi.fn().mockImplementation(() => ({
       saveHistory: saveHistoryMock,

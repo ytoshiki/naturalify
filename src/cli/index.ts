@@ -1,5 +1,5 @@
-import chalk from 'chalk'
 import 'dotenv/config'
+import chalk from 'chalk'
 import { initializeDatabase } from '../database/migrations/index.js'
 import ensureAPIKey from './helpers/apiKey.js'
 import initializeCommands from './commands/index.js'
