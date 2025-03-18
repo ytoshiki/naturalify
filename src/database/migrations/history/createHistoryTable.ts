@@ -1,6 +1,6 @@
-import Database from '../index.js'
+import Database from '../../index.js'
 
-export async function runHistoryMigration() {
+export async function createHistoryTable() {
   const db = Database.getInstance()
   await new Promise<void>((resolve, reject) => {
     db.run(
@@ -14,15 +14,6 @@ export async function runHistoryMigration() {
           timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )`,
       (err) => (err ? reject(err) : resolve()),
-    )
-  })
-}
-
-export async function dropHistoryTable() {
-  const db = Database.getInstance()
-  await new Promise<void>((resolve, reject) => {
-    db.run(`DROP TABLE IF EXISTS history`, (err) =>
-      err ? reject(err) : resolve(),
     )
   })
 }

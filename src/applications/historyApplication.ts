@@ -1,10 +1,10 @@
 import inquirer from 'inquirer'
-import HistoryService from '../services/history.js'
+import HistoryService from '../services/historyService.js'
 import chalk from 'chalk'
-import Spinner from '../utils/spinner.js'
+import Spinner from '../cli/helpers/spinner.js'
 import { History } from '../types/history.js'
 
-export default class HistoryCLI {
+export default class HistoryApplication {
   private historyService: HistoryService
 
   constructor() {

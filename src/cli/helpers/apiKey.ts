@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import boxen from 'boxen'
-import { NATURALIFY_API_KEY } from '../config/env.js'
+import { NATURALIFY_API_KEY } from '../../config/env.js'
 
 const message = `
 ${chalk.red('👀 It looks like the NATURALIFY_API_KEY key is not set in the environment.')}

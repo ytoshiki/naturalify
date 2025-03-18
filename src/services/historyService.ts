@@ -1,5 +1,5 @@
 import { History as THistory } from '../types/history.js'
-import HistoryRepository from '../database/historyRepo.js'
+import HistoryRepository from '../repositories/historyRepository.js'
 
 export default class History {
   private historyRepo = new HistoryRepository()

@@ -1,5 +1,5 @@
 import { History } from '../types/history.js'
-import Database from './index.js'
+import Database from '../database/index.js'
 
 export default class HistoryRepository {
   private db = Database.getInstance()
