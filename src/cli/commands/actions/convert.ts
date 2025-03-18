@@ -1,22 +1,33 @@
-import chalk from 'chalk'
 import boxen from 'boxen'
-import HistoryCLI from '../../applications/historyApplication.js'
-import promptUser from '../../prompts/prompt.js'
 import OpenAIClient from '../../../services/openaiClient.js'
-import { copyToClipboard } from '../../helpers/clipboard.js'
-import Spinner from '../../helpers/spinner.js'
 import { RequestInput, Response } from '../../../types/request.js'
+import PreferenceCLI from '../../applications/preferenceApplication.js'
+import Spinner from '../../helpers/spinner.js'
+import selectPreference from '../../prompts/selectPreference.js'
+import chalk from 'chalk'
+import { copyToClipboard } from '../../helpers/clipboard.js'
+import HistoryCLI from '../../applications/historyApplication.js'
 
-const historyCli = new HistoryCLI()
+const preferenceCli = new PreferenceCLI()
 const openai = new OpenAIClient()
+const historyCli = new HistoryCLI()
 
-async function action() {
-  const answers = await promptUser()
+async function action(text: string) {
+  const preference = await preferenceCli.getPreference()
+
+  if (preference.length === 0) {
+    return
+  }
+
+  const selectedPreference = await selectPreference(preference)
 
   const spinner = new Spinner()
   spinner.start('Converting sentence...')
 
-  const transformedSentence = await convertSentence(answers)
+  const transformedSentence = await convertSentence({
+    ...selectedPreference,
+    sentence: text,
+  })
 
   if (!transformedSentence?.result) {
     spinner.stop(
@@ -43,12 +54,12 @@ async function action() {
 
   copyToClipboard(cleanedSentence)
 
-  const { context, recipient, communication, sentence } = answers
+  const { context, recipient, communication } = selectedPreference
   await historyCli.saveHistory({
     context,
     recipient,
     communication,
-    original_sentence: sentence,
+    original_sentence: text,
     transformed_sentence: cleanedSentence,
   })
 }
