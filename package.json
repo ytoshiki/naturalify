@@ -1,6 +1,6 @@
 {
   "name": "naturalify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "A CLI tool that adjusts a sentence to more natural English based on user preferences.",
   "keywords": [
@@ -29,10 +29,11 @@
     "dev:watch": "nodemon --exec npm run dev",
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "prepare": "husky install",
+    "prepare": "husky install && npm run build",
     "test": "vitest",
     "type-check": "tsc  --noemit",
-    "lint": "eslint --ext .ts"
+    "lint": "eslint --ext .ts",
+    "knip": "knip"
   },
   "files": [
     "dist/",
@@ -46,20 +47,15 @@
     "clipboardy": "^4.0.0",
     "commander": "^13.1.0",
     "dotenv": "^16.4.7",
-    "enquirer": "^2.4.1",
-    "figlet": "^1.8.0",
     "inquirer": "^12.5.0",
     "ora": "^8.2.0",
-    "readline-sync": "^1.4.10",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@clack/prompts": "^0.10.0",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "@types/figlet": "^1.7.0",
     "@types/node": "^22.13.10",
-    "@types/readline-sync": "^1.4.8",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "cross-env": "^7.0.3",
@@ -67,11 +63,11 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "husky": "^8.0.0",
+    "knip": "^5.46.0",
     "lint-staged": "^15.5.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
-    "tsc-watch": "^6.2.1",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
   },
