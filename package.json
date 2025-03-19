@@ -1,6 +1,6 @@
 {
   "name": "naturalify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "A CLI tool that adjusts a sentence to more natural English based on user preferences.",
   "keywords": [
@@ -29,7 +29,7 @@
     "dev:watch": "nodemon --exec npm run dev",
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "prepare": "husky install",
+    "prepare": "husky install && npm run build",
     "test": "vitest",
     "type-check": "tsc  --noemit",
     "lint": "eslint --ext .ts"
