@@ -25,14 +25,21 @@ export default class OpenAIClient {
 You are helping a non-native English speaker refine their writing.  
 Rewrite the sentence naturally based on:  
 
-- **Context**: ${context}  
+- **Platform**: ${context} 
 - **Recipient**: ${recipient}  
-- **Style**: ${communication}  
+- **Tone**: ${communication} 
+
+Follow these platform-specific guidelines:  
+- **SNS**: Casual, concise, abbreviations/slang allowed when appropriate.  
+- **GitHub**: Logical, concise, and technically precise.  
+- **Slack**: Business casual, clear, and friendly.  
+- **Mail**: Formal, polite, and well-structured.  
+
+Ensure that the **tone** matches both the platform and the intended formality level.  
 
 Original: "${sentence}"  
 
-Respond with **only the improved sentence**, nothing else.
-`
+Respond with **only the improved sentence**, nothing else.`
 
     const messages = [{ role: 'system', content: prompt }]
 
