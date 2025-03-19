@@ -21,7 +21,8 @@ export default class OpenAIClient {
     communication,
     sentence,
   }: Request): Promise<Response> {
-    const prompt = `You are helping a non-native English speaker refine their writing.  
+    const prompt = `
+You are helping a non-native English speaker refine their writing.  
 Rewrite the sentence naturally based on:  
 
 - **Platform**: ${context} 
