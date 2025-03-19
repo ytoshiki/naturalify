@@ -32,7 +32,8 @@
     "prepare": "husky install && npm run build",
     "test": "vitest",
     "type-check": "tsc  --noemit",
-    "lint": "eslint --ext .ts"
+    "lint": "eslint --ext .ts",
+    "knip": "knip"
   },
   "files": [
     "dist/",
@@ -67,6 +68,7 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "husky": "^8.0.0",
+    "knip": "^5.46.0",
     "lint-staged": "^15.5.0",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
