@@ -13,7 +13,7 @@ Recipient:
 "stranger" → Someone you do not know well.
 
 Communication Style:
-"direct" → Concise and to the point.
+"direct" → Concise and to the point, but not abrupt or demanding.
 "indirect" → Softer and polite (e.g., "Would you be able to...").
 "polite" → Very polite and formal (e.g., "I was wondering if...").
 
@@ -49,7 +49,7 @@ Recipient:
 "stranger" → Someone you do not know well (e.g., an external contributor).
 
 Communication Style:
-"direct" → Brief and clear; for quick technical discussions or requests.
+"direct" → Brief and clear; for quick technical discussions or requests, but not too abrupt.
 "indirect" → More polite and considerate, but still focused on clarity.
 "polite" → Respectful and formal, for interactions that may involve detailed code reviews or formal communication.
 
@@ -85,7 +85,7 @@ Recipient:
 "stranger" → Someone you do not know well (e.g., an external person or someone you have not met personally).
 
 Communication Style:
-"direct" → Brief and clear; for quick social interactions.
+"direct" → Brief and clear; for quick social interactions, but not too abrupt.
 "indirect" → More polite and considerate, but still friendly and informal.
 "polite" → Slightly formal and respectful, suitable for messages to people you don’t know well.
 

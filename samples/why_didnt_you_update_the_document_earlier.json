@@ -1,0 +1,191 @@
+[
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Please update the document."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Would you be able to provide an update on why the document was not updated earlier?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I was wondering if you could let me know the reason for the delay in updating the document."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why didn’t you update the document sooner?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Could you let me know why the document wasn't updated earlier?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I’d appreciate it if you could let me know why the document wasn't updated earlier."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why haven't you updated the document yet?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Would it be possible to ask why the document wasn't updated earlier?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I was wondering if you could let me know why the document wasn't updated earlier."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Please update the document at your earliest convenience."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Could you please clarify the reason for the delay in updating the document?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I hope this message finds you well. I was wondering if you could provide some insight into the delay in updating the document. Thank you."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why haven’t you updated the document?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Could you please let me know why the document wasn’t updated earlier?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I hope you don't mind me asking, but could you share the reason for not updating the document earlier? Your insights would be appreciated."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Please update the document at your earliest convenience."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Would you mind sharing the reasons for the delay in updating the document?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I was wondering if you could share the reasons for the delay in updating the document at your earliest convenience."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why didn't you update the doc sooner?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Hey! I was just wondering why the document didn't get updated earlier?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Hey! Just curious, is there a reason you didn't get a chance to update the document sooner?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why didn’t you update the document before?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Hey, I was just curious if you could update the document when you get a chance?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I was wondering if you could update the document when you have a chance. Thanks!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Why didn't you update the document sooner?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "Would you mind updating the document when you get a chance? Thanks!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "Why did't you update the document earlier?",
+    "adjusted": "I was wondering if you could let me know why the document wasn't updated earlier. Thank you!"
+  }
+]

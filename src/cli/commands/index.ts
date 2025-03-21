@@ -54,7 +54,7 @@ const initializeCommands = () => {
     .description(
       'naturalify - A CLI tool to adjust English sentences into more natural English',
     )
-    .version('0.1.0')
+    .version('1.0.0')
     .action(async () => {
       await mainAction()
     })

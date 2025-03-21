@@ -28,6 +28,9 @@
     "type": "git",
     "url": "https://github.com/ytoshiki/naturalify"
   },
+  "bugs": {
+    "url": "https://github.com/ytoshiki/naturalify/issues"
+  },
   "bin": {
     "naturalify": "./bin/cli.js"
   },
@@ -40,7 +43,8 @@
     "type-check": "tsc  --noemit",
     "lint": "eslint --ext .ts",
     "knip": "knip",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "bulk-convert": "cross-env TS_NODE_TRANSPILE_ONLY=1 node --no-warnings --loader ts-node/esm scripts/bulkConvert.ts"
   },
   "files": [
     "dist/",
