@@ -1,0 +1,191 @@
+[
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Please check this."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Would you be able to check this?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "manager",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I was wondering if you could check this for me."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Could you take a moment to check this?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "colleague",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I’d appreciate it if you could take a moment to check this."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this, please."
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Would it be possible for you to check this?"
+  },
+  {
+    "platform": "Slack",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I was wondering if you could take a moment to check this."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Please check this."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Could you please take a moment to check this when you have the opportunity?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "manager",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I would greatly appreciate it if you could take a moment to check this when you have the opportunity."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Could you please take a look at this when you have a moment?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "colleague",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I would appreciate it if you could take a moment to check this when you have the opportunity."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this."
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Would it be possible for you to check this when you have a moment?"
+  },
+  {
+    "platform": "GitHub",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I would appreciate it if you could take a moment to check this when it's convenient for you."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Can you check this out?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Hey, could you take a look at this when you have a moment?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "Hey! I’d really appreciate it if you could take a look at this when you have a moment."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this out!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Would you mind taking a look at this when you get a moment?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I was wondering if you could take a moment to check this for me when you have a chance."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "can you check this?",
+    "adjusted": "Check this out?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "can you check this?",
+    "adjusted": "Would you mind checking this for me when you have a moment?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "can you check this?",
+    "adjusted": "I would greatly appreciate it if you could take a moment to check this for me."
+  }
+]
