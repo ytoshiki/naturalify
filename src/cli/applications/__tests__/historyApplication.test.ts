@@ -15,8 +15,8 @@ vi.mock('../../helpers/spinner.ts')
 const mockHistoryData = vi.hoisted(() => [
   {
     context: 'Slack',
-    recipient: 'Boss',
-    communication: 'Polite',
+    recipient: 'manager',
+    communication: 'polite',
     original_sentence: 'I need to talk. Do you have time?',
     transformed_sentence:
       'Could we find a moment to discuss something? I appreciate your time.',
@@ -45,8 +45,8 @@ describe('applications/historyApplication.ts', () => {
   it('should save history correctly', async () => {
     const historyData = {
       context: 'Slack',
-      recipient: 'Boss',
-      communication: 'Polite',
+      recipient: 'manager',
+      communication: 'polite',
       original_sentence: 'I need to talk. Do you have time?',
       transformed_sentence:
         'Could we find a moment to discuss something? I appreciate your time.',

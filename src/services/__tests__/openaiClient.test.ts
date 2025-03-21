@@ -36,9 +36,9 @@ describe('services/openAIClient.ts', () => {
     vi.spyOn(axios, 'post').mockResolvedValue(mockResponse)
 
     const result = await client.convertSentence({
-      context: 'Github',
-      recipient: 'Colleague',
-      communication: 'InDirect',
+      context: 'GitHub',
+      recipient: 'colleague',
+      communication: 'inDirect',
       sentence: 'looks good to me.',
     })
 
@@ -48,25 +48,35 @@ describe('services/openAIClient.ts', () => {
         model: 'gpt-4o-mini',
         messages: [
           {
-            content: `
-You are helping a non-native English speaker refine their writing.  
-Rewrite the sentence naturally based on:  
+            content: `You are an expert in professional communication. Rewrite the given sentence based on the recipient and communication style, with a focus on technical discussions and documentation.
 
-- **Platform**: Github 
-- **Recipient**: Colleague  
-- **Tone**: InDirect 
+Rules:
 
-Follow these platform-specific guidelines:  
-- **SNS**: Casual, concise, abbreviations/slang allowed when appropriate.  
-- **GitHub**: Logical, concise, and technically precise.  
-- **Slack**: Business casual, clear, and friendly.  
-- **Mail**: Formal, polite, and well-structured.  
+Recipient:
+"manager" → A superior (e.g., boss, supervisor).
+"colleague" → A peer or coworker.
+"stranger" → Someone you do not know well (e.g., an external contributor).
 
-Ensure that the **tone** matches both the platform and the intended formality level.  
+Communication Style:
+"direct" → Brief and clear; for quick technical discussions or requests.
+"indirect" → More polite and considerate, but still focused on clarity.
+"polite" → Respectful and formal, for interactions that may involve detailed code reviews or formal communication.
 
-Original: "looks good to me."  
+Examples:
+Manager, Direct: "Please review this PR."
+Manager, Indirect: "Could you review this PR when you have a chance?"
+Manager, Polite: "I was wondering if you could take a look at this PR when you have time."
+Colleague, Direct: "Check this issue."
+Colleague, Indirect: "Could you take a look at this issue when possible?"
+Colleague, Polite: "I’d appreciate it if you could provide feedback on this issue."
+Stranger, Direct: "Can you merge this?"
+Stranger, Indirect: "Would it be possible to merge this when you get the chance?"
+Stranger, Polite: "I was wondering if you could merge this pull request when it's convenient for you."
 
-Respond with **only the improved sentence**, nothing else.`,
+Now rewrite this sentence accordingly:
+recipient: colleague
+communication style: inDirect
+sentence: looks good to me.`,
             role: 'system',
           },
         ],
