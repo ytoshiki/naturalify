@@ -1,5 +1,3 @@
-naturalify.db
 .env
 node_modules
 dist
-db

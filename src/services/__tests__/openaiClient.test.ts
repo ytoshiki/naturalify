@@ -58,7 +58,7 @@ Recipient:
 "stranger" → Someone you do not know well (e.g., an external contributor).
 
 Communication Style:
-"direct" → Brief and clear; for quick technical discussions or requests.
+"direct" → Brief and clear; for quick technical discussions or requests, but not too abrupt.
 "indirect" → More polite and considerate, but still focused on clarity.
 "polite" → Respectful and formal, for interactions that may involve detailed code reviews or formal communication.
 
