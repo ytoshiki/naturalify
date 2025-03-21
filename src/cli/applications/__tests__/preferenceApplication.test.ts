@@ -17,8 +17,8 @@ vi.mock('../../helpers/spinner.ts')
 const mockPreferenceData = vi.hoisted(() => [
   {
     context: 'Slack',
-    recipient: 'Boss',
-    communication: 'Polite',
+    recipient: 'manager',
+    communication: 'polite',
   },
 ])
 const mockSave = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
@@ -43,8 +43,8 @@ describe('PreferenceApplication', () => {
   it('should save preference correctly', async () => {
     const preferenceData = {
       context: 'Slack',
-      recipient: 'Boss',
-      communication: 'Polite',
+      recipient: 'manager',
+      communication: 'polite',
     }
 
     await preferenceApplication.savePreference(preferenceData)
@@ -102,8 +102,8 @@ describe('PreferenceApplication', () => {
 
     const preferenceData = {
       context: 'Slack',
-      recipient: 'Boss',
-      communication: 'Polite',
+      recipient: 'manager',
+      communication: 'polite',
     }
 
     await expect(

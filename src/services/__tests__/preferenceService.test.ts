@@ -7,8 +7,8 @@ const getPreferenceMock = vi.hoisted(() =>
   vi.fn().mockResolvedValue([
     {
       context: 'Slack',
-      recipient: 'Boss',
-      communication: 'Polite',
+      recipient: 'manager',
+      communication: 'polite',
       original_sentence: 'I need to talk. Do you have time?',
       transformed_sentence:
         'Could we find a moment to discuss something? I appreciate your time.',
