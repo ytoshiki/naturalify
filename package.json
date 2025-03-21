@@ -5,13 +5,22 @@
   "description": "A CLI tool that adjusts a sentence to more natural English based on user preferences.",
   "keywords": [
     "cli",
-    "english",
-    "language",
-    "natural",
     "ai",
-    "preferences",
-    "typescript",
-    "communication"
+    "chatgpt",
+    "natural-language",
+    "english",
+    "writing",
+    "sentence-improvement",
+    "communication",
+    "text-enhancement",
+    "formal",
+    "casual",
+    "business-writing",
+    "cli-tool",
+    "writing-assistant",
+    "productivity",
+    "chatgpt-cli",
+    "content-improvement"
   ],
   "author": "Toshiki Yoshioka",
   "license": "MIT",
@@ -24,16 +33,14 @@
   },
   "scripts": {
     "dev": "cross-env TS_NODE_TRANSPILE_ONLY=1 node --no-warnings --loader ts-node/esm src/index.ts",
-    "dev:history": "npm run dev -- --history",
-    "dev:drop-history": "npm run dev -- --drop-history",
     "dev:watch": "nodemon --exec npm run dev",
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "prepare": "husky install && npm run build",
+    "prepare": "npm run build",
     "test": "vitest",
     "type-check": "tsc  --noemit",
     "lint": "eslint --ext .ts",
-    "knip": "knip"
+    "knip": "knip",
+    "postinstall": "husky install"
   },
   "files": [
     "dist/",
