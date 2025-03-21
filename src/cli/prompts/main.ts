@@ -1,6 +1,7 @@
 import { intro, select, text, outro, isCancel, cancel } from '@clack/prompts'
 import chalk from 'chalk'
 import { isValidEnglishSentence } from '../helpers/validator.js'
+import { selectRecipient } from '../helpers/selectRecipient.js'
 
 const promptUser = async () => {
   intro(chalk.blue('✨ Naturalify Your English Sentence ✨'))
@@ -11,7 +12,6 @@ const promptUser = async () => {
       { value: 'Slack', label: 'Slack' },
       { value: 'GitHub', label: 'GitHub' },
       { value: 'SNS (Social Media)', label: 'SNS (Social Media)' },
-      { value: 'Email', label: 'Email' },
     ],
   })
 
@@ -22,12 +22,7 @@ const promptUser = async () => {
 
   const recipient = await select({
     message: '2/3: Who is this message for? 🎯',
-    options: [
-      { value: 'Colleague', label: 'Colleague' },
-      { value: 'Boss', label: 'Boss' },
-      { value: 'Friend', label: 'Friend' },
-      { value: 'Stranger', label: 'Stranger' },
-    ],
+    options: selectRecipient(context),
   })
 
   if (isCancel(recipient)) {
@@ -41,15 +36,15 @@ const promptUser = async () => {
     message: `3/3: Choose your communication style 🗣️`,
     options: [
       {
-        value: 'Direct',
+        value: 'direct',
         label: 'Direct',
       },
       {
-        value: 'Indirect',
+        value: 'indirect',
         label: 'Indirect',
       },
       {
-        value: 'Polite',
+        value: 'polite',
         label: 'Polite',
       },
     ],

@@ -8,6 +8,11 @@ import {
   TEMPERATURE,
 } from '../config/env.js'
 import { Request, Response } from '../types/openai.js'
+import {
+  promptForGithub,
+  promptForSlack,
+  promptForSNS,
+} from '../config/openAIPrompts.js'
 
 export default class OpenAIClient {
   constructor() {
@@ -21,25 +26,23 @@ export default class OpenAIClient {
     communication,
     sentence,
   }: Request): Promise<Response> {
-    const prompt = `
-You are helping a non-native English speaker refine their writing.  
-Rewrite the sentence naturally based on:  
+    const prompt = (() => {
+      switch (context) {
+        case 'Slack':
+          return promptForSlack(recipient, communication, sentence)
+        case 'GitHub':
+          return promptForGithub(recipient, communication, sentence)
+        case 'SNS (Social Media)':
+          return promptForSNS(recipient, communication, sentence)
+        default:
+          return ''
+      }
+    })()
 
-- **Platform**: ${context} 
-- **Recipient**: ${recipient}  
-- **Tone**: ${communication} 
-
-Follow these platform-specific guidelines:  
-- **SNS**: Casual, concise, abbreviations/slang allowed when appropriate.  
-- **GitHub**: Logical, concise, and technically precise.  
-- **Slack**: Business casual, clear, and friendly.  
-- **Mail**: Formal, polite, and well-structured.  
-
-Ensure that the **tone** matches both the platform and the intended formality level.  
-
-Original: "${sentence}"  
-
-Respond with **only the improved sentence**, nothing else.`
+    if (!prompt) {
+      console.log(chalk.red('\n✖ Error: Invalid Context'))
+      process.exit(0)
+    }
 
     const messages = [{ role: 'system', content: prompt }]
 
