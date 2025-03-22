@@ -6,10 +6,10 @@ import Spinner from './spinner.js'
 import OpenAIClient from '../../services/openaiClient.js'
 import HistoryCLI from '../applications/historyApplication.js'
 
-const openai = new OpenAIClient()
-const historyCli = new HistoryCLI()
-
 async function convert(input: Request) {
+  const openai = new OpenAIClient()
+  const historyCli = new HistoryCLI()
+
   const spinner = new Spinner()
   spinner.start('Adjusting your sentence...')
 
