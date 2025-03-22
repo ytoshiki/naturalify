@@ -70,7 +70,7 @@ describe('applications/historyApplication.ts', () => {
         `${1}. ${mockHistoryData[0].context} | ${mockHistoryData[0].recipient} | ${mockHistoryData[0].communication}`,
       ) +
         '\n' +
-        chalk.gray(`Original:  ${mockHistoryData[0].original_sentence}\n`) +
+        chalk.gray(`Original: ${mockHistoryData[0].original_sentence}\n`) +
         chalk.white(`Adjusted: ${mockHistoryData[0].transformed_sentence}`) +
         '\n',
     )

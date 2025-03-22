@@ -29,7 +29,7 @@ export default class HistoryApplication {
           `${index + 1}. ${row.context} | ${row.recipient} | ${row.communication}`,
         ) +
           '\n' +
-          chalk.gray(`Original:  ${row.original_sentence}\n`) +
+          chalk.gray(`Original: ${row.original_sentence}\n`) +
           chalk.white(`Adjusted: ${row.transformed_sentence}`) +
           '\n',
       )
