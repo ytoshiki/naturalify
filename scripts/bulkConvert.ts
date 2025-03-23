@@ -13,8 +13,7 @@ const FILENAME = ''
 
 const openai = new OpenAIClient()
 
-// const contexts = ['Slack', 'GitHub', 'SNS (Social Media)']
-const contexts = ['SNS (Social Media)']
+const contexts = ['Slack', 'GitHub', 'SNS (Social Media)']
 const communications = ['direct', 'indirect', 'polite']
 const recipientsForBusiness = ['manager', 'colleague', 'stranger']
 const recipientsForCasual = ['friend', 'acquaintance', 'stranger']
