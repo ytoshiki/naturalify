@@ -38,7 +38,7 @@ describe('services/openAIClient.ts', () => {
     const result = await client.convertSentence({
       context: 'GitHub',
       recipient: 'colleague',
-      communication: 'inDirect',
+      communication: 'indirect',
       sentence: 'looks good to me.',
     })
 
@@ -48,35 +48,43 @@ describe('services/openAIClient.ts', () => {
         model: 'gpt-4o-mini',
         messages: [
           {
-            content: `You are an expert in professional communication. Rewrite the given sentence based on the recipient and communication style, with a focus on technical discussions and documentation.
+            content: `You are an expert in professional and technical communication. Rewrite the following sentence based on the recipient and communication style, ensuring it remains appropriate for GitHub discussions such as code reviews, issue tracking, and pull request comments. The rewritten sentence should maintain the original meaning, be respectful, and align with the conventions commonly used on GitHub.
 
-Rules:
+### Rules:
 
-Recipient:
-"manager" → A superior (e.g., boss, supervisor).
-"colleague" → A peer or coworker.
-"stranger" → Someone you do not know well (e.g., an external contributor).
+1. Recipient:
+   - "manager" → A superior (e.g., boss, supervisor). Communications should be respectful and professional, keeping a tone of authority while being clear.
+   - "colleague" → A peer or coworker. The tone should be collaborative, clear, and professional but not overly formal.
+   - "stranger" → Someone you don’t know well (e.g., an external contributor). This requires a more formal and respectful tone, possibly including some politeness to ease the interaction.
 
-Communication Style:
-"direct" → Brief and clear; for quick technical discussions or requests, but not too abrupt.
-"indirect" → More polite and considerate, but still focused on clarity.
-"polite" → Respectful and formal, for interactions that may involve detailed code reviews or formal communication.
+2. Communication Style:
+   - "direct" → Clear and concise. Suitable for quick technical discussions or requests. It should be professional but not overly abrupt, especially for colleagues or managers.
+   - "indirect" → Polite and considerate. Making requests in a less forceful manner while maintaining clarity. Suitable for when you want to sound respectful without being overly formal.
+   - "polite" → Respectful, courteous, and professional, often used in formal reviews or when addressing someone unfamiliar. This style should be used for addressing someone you don’t know well or when the situation requires formality.
 
-Examples:
-Manager, Direct: "Please review this PR."
-Manager, Indirect: "Could you review this PR when you have a chance?"
-Manager, Polite: "I was wondering if you could take a look at this PR when you have time."
-Colleague, Direct: "Check this issue."
-Colleague, Indirect: "Could you take a look at this issue when possible?"
-Colleague, Polite: "I’d appreciate it if you could provide feedback on this issue."
-Stranger, Direct: "Can you merge this?"
-Stranger, Indirect: "Would it be possible to merge this when you get the chance?"
-Stranger, Polite: "I was wondering if you could merge this pull request when it's convenient for you."
+### Examples:
 
-Now rewrite this sentence accordingly:
-recipient: colleague
-communication style: inDirect
-sentence: looks good to me.`,
+- Manager, Direct: "Please review this PR."
+- Manager, Indirect: "Could you review this PR when you have a chance?"
+- Manager, Polite: "I’d appreciate it if you could review this PR when you have time."
+- Colleague, Direct: "Take a look at this issue."
+- Colleague, Indirect: "Could you take a look at this issue when you get a chance?"
+- Colleague, Polite: "I’d appreciate your feedback on this issue."
+- Stranger, Direct: "Please merge this."
+- Stranger, Indirect: "Would you be able to merge this when you have a moment?"
+- Stranger, Polite: "If it's convenient, I’d appreciate it if you could merge this pull request."
+
+### Instructions:
+Now, rewrite the following sentence to match the recipient and communication style while keeping its original meaning. Ensure that the adjusted sentence:
+- Reflects the appropriate level of formality and respect for the recipient.
+- Aligns with common GitHub communication norms.
+- Is concise, professional, and clear.
+
+- Recipient: colleague
+- Communication Style: indirect
+- Sentence: "looks good to me."
+
+If the sentence already aligns with the desired tone and communication style, return it unchanged. Otherwise, adjust it to ensure it remains professional, concise, and suitable for GitHub discussions.`,
             role: 'system',
           },
         ],

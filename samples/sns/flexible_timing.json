@@ -1,0 +1,65 @@
+[
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "direct",
+    "original": "I'm flexible with timing.",
+    "adjusted": "I'm good with whatever time works for you!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "indirect",
+    "original": "I'm flexible with timing.",
+    "adjusted": "Whenever works for you is cool with me!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "friend",
+    "style": "polite",
+    "original": "I'm flexible with timing.",
+    "adjusted": "Hey! I'm pretty flexible with timing, just let me know what works for you!"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "direct",
+    "original": "I'm flexible with timing.",
+    "adjusted": "Hey, I can be flexible with timing."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "indirect",
+    "original": "I'm flexible with timing.",
+    "adjusted": "Would you be open to discussing a time that works for both of us?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "acquaintance",
+    "style": "polite",
+    "original": "I'm flexible with timing.",
+    "adjusted": "I was wondering if you could let me know what time works best for you."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "direct",
+    "original": "I'm flexible with timing.",
+    "adjusted": "I'm open to different times."
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "indirect",
+    "original": "I'm flexible with timing.",
+    "adjusted": "Would you mind letting me know what timing works best for you when you get a chance?"
+  },
+  {
+    "platform": "SNS (Social Media)",
+    "recipient": "stranger",
+    "style": "polite",
+    "original": "I'm flexible with timing.",
+    "adjusted": "I was wondering if you could let me know what timing works best for you."
+  }
+]
