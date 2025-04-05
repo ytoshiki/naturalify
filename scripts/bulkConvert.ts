@@ -6,13 +6,13 @@ import OpenAIClient from '../src/services/openaiClient.js'
 // NOTE: Set the following values to run the script
 // SENTENCE: sentence to adjust
 // FILENAME: filename to save the result
-const SENTENCE =
-  'Quick question, have you applied this change in production or just in staging environment?'
-const FILENAME = 'a'
+const SENTENCE = ''
+const FILENAME = ''
 
 const openai = new OpenAIClient()
 
 const communications = ['neutral', 'casual', 'polite']
+
 
 run()
 

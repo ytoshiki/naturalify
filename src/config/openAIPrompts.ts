@@ -1,3 +1,4 @@
+
 const promptForSlack = (style: string, sentence: string) => {
   return `You are an expert in business communication. Your task is to **adjust the tone and formality** of a sentence intended for Slack communication, based on the provided style (neutral, casual, polite). The goal is to make the sentence **natural, conversational, and fitting for Slack**, avoiding any overly formal or stiff language. Ensure the message remains clear, friendly, and professional without sounding robotic.
 

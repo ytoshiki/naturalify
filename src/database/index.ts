@@ -2,6 +2,7 @@ import sqlite3 from 'sqlite3'
 import { DB_FILE, NATURALIFY_DB_PATH } from '../config/env.js'
 import path from 'path'
 import fs from 'fs'
+import os from 'os'
 
 const dbDirectory = path.resolve(NATURALIFY_DB_PATH)
 const dbFilePath = path.join(dbDirectory, DB_FILE)
