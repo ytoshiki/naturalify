@@ -1,6 +1,4 @@
 export type Request = {
-  context: string
-  recipient: string
   communication: string
   sentence: string
 }

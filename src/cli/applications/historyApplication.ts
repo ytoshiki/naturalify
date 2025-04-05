@@ -25,11 +25,9 @@ export default class HistoryApplication {
     console.log(chalk.bold('\n🪄 Text Adjustment History:\n'))
     history.forEach((row, index) => {
       console.log(
-        chalk.cyan(
-          `${index + 1}. ${row.context} | ${row.recipient} | ${row.communication}`,
-        ) +
+        chalk.cyan(`${index + 1}. ${row.communication}`) +
           '\n' +
-          chalk.gray(`Original:  ${row.original_sentence}\n`) +
+          chalk.gray(`Original: ${row.original_sentence}\n`) +
           chalk.white(`Adjusted: ${row.transformed_sentence}`) +
           '\n',
       )

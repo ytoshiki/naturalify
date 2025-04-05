@@ -4,8 +4,6 @@ const saveHistoryMock = vi.hoisted(() => vi.fn().mockResolvedValue(undefined))
 const getHistoryMock = vi.hoisted(() =>
   vi.fn().mockResolvedValue([
     {
-      context: 'Slack',
-      recipient: 'manager',
       communication: 'polite',
       original_sentence: 'I need to talk. Do you have time?',
       transformed_sentence:
@@ -35,17 +33,13 @@ describe('services/historyService.ts', () => {
 
   it('should save a history entry', async () => {
     await history.save({
-      context: 'Github',
-      recipient: 'Colleague',
-      communication: 'InDirect',
+      communication: 'polite',
       original_sentence: 'looks good to me.',
       transformed_sentence: 'I think it appears to be quite good.',
     })
 
     expect(saveHistoryMock).toHaveBeenCalledWith({
-      context: 'Github',
-      recipient: 'Colleague',
-      communication: 'InDirect',
+      communication: 'polite',
       original_sentence: 'looks good to me.',
       transformed_sentence: 'I think it appears to be quite good.',
     })

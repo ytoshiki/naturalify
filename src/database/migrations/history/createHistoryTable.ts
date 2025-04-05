@@ -6,8 +6,6 @@ export async function createHistoryTable() {
     db.run(
       `CREATE TABLE IF NOT EXISTS history (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
-          context TEXT,
-          recipient TEXT,
           communication TEXT,
           original_sentence TEXT,
           transformed_sentence TEXT,
