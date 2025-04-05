@@ -2,7 +2,7 @@
   "name": "naturalify",
   "version": "1.0.0",
   "type": "module",
-  "description": "A CLI tool that adjusts a sentence to more natural English based on user preferences.",
+  "description": "A CLI tool that adjusts a sentence to more natural English",
   "keywords": [
     "cli",
     "ai",

@@ -1,18 +1,15 @@
 [
   {
-    "platform": "Slack",
     "style": "neutral",
     "original": "Can you take a look at this PR, please?",
     "adjusted": "Could you take a look at this PR?"
   },
   {
-    "platform": "Slack",
     "style": "casual",
     "original": "Can you take a look at this PR, please?",
     "adjusted": "Hey, can you check out this PR?"
   },
   {
-    "platform": "Slack",
     "style": "polite",
     "original": "Can you take a look at this PR, please?",
     "adjusted": "Could you please take a look at this PR when you have a moment?"

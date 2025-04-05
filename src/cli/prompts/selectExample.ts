@@ -1,6 +1,6 @@
 import { intro, select, isCancel, cancel } from '@clack/prompts'
 import chalk from 'chalk'
-import categories from '../prompts/examples.json' assert { type: 'json' }
+import categories from '../prompts/examples.json' with { type: 'json' }
 import { copyToClipboard } from '../helpers/clipboard.js'
 
 const selectExample = async () => {
