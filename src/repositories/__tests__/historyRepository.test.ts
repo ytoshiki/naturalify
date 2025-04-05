@@ -3,9 +3,7 @@ import HistoryRepository from '../historyRepository.js'
 import { History } from '../../types/history.js'
 
 const historyData: History = {
-  context: 'Github',
-  recipient: 'Colleague',
-  communication: 'InDirect',
+  communication: 'neutral',
   original_sentence: 'looks good to me.',
   transformed_sentence: 'I think it appears to be quite good.',
 }
@@ -44,10 +42,8 @@ describe('repositories/historyRepository.ts', () => {
     ).resolves.not.toThrow()
 
     expect(mockRun).toHaveBeenCalledWith(
-      'INSERT INTO history (context, recipient, communication, original_sentence, transformed_sentence) VALUES (?, ?, ?, ?, ?)',
+      'INSERT INTO history (communication, original_sentence, transformed_sentence) VALUES (?, ?, ?)',
       [
-        historyData.context,
-        historyData.recipient,
         historyData.communication,
         historyData.original_sentence,
         historyData.transformed_sentence,

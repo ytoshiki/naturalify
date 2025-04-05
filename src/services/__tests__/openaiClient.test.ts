@@ -36,9 +36,7 @@ describe('services/openAIClient.ts', () => {
     vi.spyOn(axios, 'post').mockResolvedValue(mockResponse)
 
     const result = await client.convertSentence({
-      context: 'GitHub',
-      recipient: 'colleague',
-      communication: 'inDirect',
+      communication: 'polite',
       sentence: 'looks good to me.',
     })
 
@@ -48,35 +46,46 @@ describe('services/openAIClient.ts', () => {
         model: 'gpt-4o-mini',
         messages: [
           {
-            content: `You are an expert in professional communication. Rewrite the given sentence based on the recipient and communication style, with a focus on technical discussions and documentation.
+            content: `You are an expert in business communication. Your task is to **adjust the tone and formality** of a sentence intended for Slack communication, based on the provided style (neutral, casual, polite). The goal is to make the sentence **natural, conversational, and fitting for Slack**, avoiding any overly formal or stiff language. Ensure the message remains clear, friendly, and professional without sounding robotic.
 
-Rules:
+### Instructions:
+1. **Style**:
+   - **"neutral"** → Use a **clear and straightforward** tone that’s appropriate for professional or neutral conversations. Keep it brief and to the point, avoiding unnecessary embellishments.
+   - **"casual"** → Use a **relaxed, friendly**, and approachable tone. This style is ideal for peers or informal conversations.
+   - **"polite"** → A **respectful** but **informal** tone. It's polite without being overly formal, suitable for Slack's casual environment while still maintaining professionalism.
 
-Recipient:
-"manager" → A superior (e.g., boss, supervisor).
-"colleague" → A peer or coworker.
-"stranger" → Someone you do not know well (e.g., an external contributor).
+2. **Adjustments**:
+   - Keep the message **short, natural, and conversational**.
+   - Avoid overly formal language, but maintain **respect and professionalism** where needed.
+   - The tone should match the Slack environment: informal but clear and appropriate for business communication.
 
-Communication Style:
-"direct" → Brief and clear; for quick technical discussions or requests, but not too abrupt.
-"indirect" → More polite and considerate, but still focused on clarity.
-"polite" → Respectful and formal, for interactions that may involve detailed code reviews or formal communication.
+### Example Adjustments:
 
-Examples:
-Manager, Direct: "Please review this PR."
-Manager, Indirect: "Could you review this PR when you have a chance?"
-Manager, Polite: "I was wondering if you could take a look at this PR when you have time."
-Colleague, Direct: "Check this issue."
-Colleague, Indirect: "Could you take a look at this issue when possible?"
-Colleague, Polite: "I’d appreciate it if you could provide feedback on this issue."
-Stranger, Direct: "Can you merge this?"
-Stranger, Indirect: "Would it be possible to merge this when you get the chance?"
-Stranger, Polite: "I was wondering if you could merge this pull request when it's convenient for you."
+- **Neutral**: 
+   - "Could you clarify the topic?"
+   - "Let me know if I can help with anything."
+   - "Do you need anything from me?"
+   - "Let me know if you have any questions."
 
-Now rewrite this sentence accordingly:
-recipient: colleague
-communication style: inDirect
-sentence: looks good to me.`,
+- **Casual**:
+   - "Can you clarify the topic for me?"
+   - "Just checking in. Let me know if you need anything!"
+   - "Hey, can you clarify something for me?"
+   - "Let me know if you need help with anything!"
+
+- **Polite**:
+   - "Could you clarify the topic when you have a moment?"
+   - "Let me know if you need anything from me!"
+   - "I hope you're doing well. Could you clarify this when you have a chance?"
+   - "Please let me know if you need anything further from me."
+
+### Task:
+Adjust the following sentence according to the style provided, ensuring it fits the tone and context for Slack communication. If the sentence is already appropriate, return it unchanged.
+
+- **Style**: polite
+- **Sentence**: "looks good to me."
+
+Return the adjusted sentence based on the context provided.`,
             role: 'system',
           },
         ],

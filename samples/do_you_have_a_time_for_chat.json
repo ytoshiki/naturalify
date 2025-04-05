@@ -1,0 +1,17 @@
+[
+  {
+    "style": "neutral",
+    "original": "Do you have a time for a chat for 3 minutes today?",
+    "adjusted": "Do you have 3 minutes to chat today?"
+  },
+  {
+    "style": "casual",
+    "original": "Do you have a time for a chat for 3 minutes today?",
+    "adjusted": "Do you have a few minutes to chat today?"
+  },
+  {
+    "style": "polite",
+    "original": "Do you have a time for a chat for 3 minutes today?",
+    "adjusted": "Hi! Do you have a few minutes to chat today?"
+  }
+]
