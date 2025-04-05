@@ -1,17 +1,17 @@
 [
   {
     "style": "neutral",
-    "original": "Can you take a look at this PR, please?",
-    "adjusted": "Could you take a look at this PR?"
+    "original": "Hey, can you take a look at this PR, please?",
+    "adjusted": "Could you please review this PR? Thank you."
   },
   {
     "style": "casual",
-    "original": "Can you take a look at this PR, please?",
-    "adjusted": "Hey, can you check out this PR?"
+    "original": "Hey, can you take a look at this PR, please?",
+    "adjusted": "Hey, can you take a quick look at this PR?"
   },
   {
     "style": "polite",
-    "original": "Can you take a look at this PR, please?",
-    "adjusted": "Could you please take a look at this PR when you have a moment?"
+    "original": "Hey, can you take a look at this PR, please?",
+    "adjusted": "Could you please take a look at this PR when you have a moment? Thank you!"
   }
 ]
