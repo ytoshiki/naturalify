@@ -36,9 +36,7 @@ describe('services/openAIClient.ts', () => {
     vi.spyOn(axios, 'post').mockResolvedValue(mockResponse)
 
     const result = await client.convertSentence({
-      context: 'GitHub',
-      recipient: 'colleague',
-      communication: 'indirect',
+      communication: 'polite',
       sentence: 'looks good to me.',
     })
 
@@ -48,43 +46,46 @@ describe('services/openAIClient.ts', () => {
         model: 'gpt-4o-mini',
         messages: [
           {
-            content: `You are an expert in professional and technical communication. Rewrite the following sentence based on the recipient and communication style, ensuring it remains appropriate for GitHub discussions such as code reviews, issue tracking, and pull request comments. The rewritten sentence should maintain the original meaning, be respectful, and align with the conventions commonly used on GitHub.
-
-### Rules:
-
-1. Recipient:
-   - "manager" → A superior (e.g., boss, supervisor). Communications should be respectful and professional, keeping a tone of authority while being clear.
-   - "colleague" → A peer or coworker. The tone should be collaborative, clear, and professional but not overly formal.
-   - "stranger" → Someone you don’t know well (e.g., an external contributor). This requires a more formal and respectful tone, possibly including some politeness to ease the interaction.
-
-2. Communication Style:
-   - "direct" → Clear and concise. Suitable for quick technical discussions or requests. It should be professional but not overly abrupt, especially for colleagues or managers.
-   - "indirect" → Polite and considerate. Making requests in a less forceful manner while maintaining clarity. Suitable for when you want to sound respectful without being overly formal.
-   - "polite" → Respectful, courteous, and professional, often used in formal reviews or when addressing someone unfamiliar. This style should be used for addressing someone you don’t know well or when the situation requires formality.
-
-### Examples:
-
-- Manager, Direct: "Please review this PR."
-- Manager, Indirect: "Could you review this PR when you have a chance?"
-- Manager, Polite: "I’d appreciate it if you could review this PR when you have time."
-- Colleague, Direct: "Take a look at this issue."
-- Colleague, Indirect: "Could you take a look at this issue when you get a chance?"
-- Colleague, Polite: "I’d appreciate your feedback on this issue."
-- Stranger, Direct: "Please merge this."
-- Stranger, Indirect: "Would you be able to merge this when you have a moment?"
-- Stranger, Polite: "If it's convenient, I’d appreciate it if you could merge this pull request."
+            content: `You are an expert in business communication. Your task is to **adjust the tone and formality** of a sentence intended for Slack communication, based on the provided style (neutral, casual, polite). The goal is to make the sentence **natural, conversational, and fitting for Slack**, avoiding any overly formal or stiff language. Ensure the message remains clear, friendly, and professional without sounding robotic.
 
 ### Instructions:
-Now, rewrite the following sentence to match the recipient and communication style while keeping its original meaning. Ensure that the adjusted sentence:
-- Reflects the appropriate level of formality and respect for the recipient.
-- Aligns with common GitHub communication norms.
-- Is concise, professional, and clear.
+1. **Style**:
+   - **"neutral"** → Use a **clear and straightforward** tone that’s appropriate for professional or neutral conversations. Keep it brief and to the point, avoiding unnecessary embellishments.
+   - **"casual"** → Use a **relaxed, friendly**, and approachable tone. This style is ideal for peers or informal conversations.
+   - **"polite"** → A **respectful** but **informal** tone. It's polite without being overly formal, suitable for Slack's casual environment while still maintaining professionalism.
 
-- Recipient: colleague
-- Communication Style: indirect
-- Sentence: "looks good to me."
+2. **Adjustments**:
+   - Keep the message **short, natural, and conversational**.
+   - Avoid overly formal language, but maintain **respect and professionalism** where needed.
+   - The tone should match the Slack environment: informal but clear and appropriate for business communication.
 
-If the sentence already aligns with the desired tone and communication style, return it unchanged. Otherwise, adjust it to ensure it remains professional, concise, and suitable for GitHub discussions.`,
+### Example Adjustments:
+
+- **Neutral**: 
+   - "Could you clarify the topic?"
+   - "Let me know if I can help with anything."
+   - "Do you need anything from me?"
+   - "Let me know if you have any questions."
+
+- **Casual**:
+   - "Can you clarify the topic for me?"
+   - "Just checking in. Let me know if you need anything!"
+   - "Hey, can you clarify something for me?"
+   - "Let me know if you need help with anything!"
+
+- **Polite**:
+   - "Could you clarify the topic when you have a moment?"
+   - "Let me know if you need anything from me!"
+   - "I hope you're doing well. Could you clarify this when you have a chance?"
+   - "Please let me know if you need anything further from me."
+
+### Task:
+Adjust the following sentence according to the style provided, ensuring it fits the tone and context for Slack communication. If the sentence is already appropriate, return it unchanged.
+
+- **Style**: polite
+- **Sentence**: "looks good to me."
+
+Return the adjusted sentence based on the context provided.`,
             role: 'system',
           },
         ],

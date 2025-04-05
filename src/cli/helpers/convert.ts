@@ -40,11 +40,9 @@ async function convert(input: Request) {
 
   copyToClipboard(cleanedSentence)
 
-  const { context, recipient, communication, sentence } = input
+  const { communication, sentence } = input
 
   await historyCli.saveHistory({
-    context,
-    recipient,
     communication,
     original_sentence: sentence,
     transformed_sentence: cleanedSentence,

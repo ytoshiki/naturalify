@@ -1,6 +1,4 @@
 // NOTE: This script is for experimental purposes only
-// Consumes approximately 300 * 3 * 3 tokens
-import { Request } from '../src/types/openai'
 import fs from 'fs/promises'
 import path from 'path'
 import OpenAIClient from '../src/services/openaiClient.js'
@@ -8,15 +6,13 @@ import OpenAIClient from '../src/services/openaiClient.js'
 // NOTE: Set the following values to run the script
 // SENTENCE: sentence to adjust
 // FILENAME: filename to save the result
-const SENTENCE = ''
-const FILENAME = ''
+const SENTENCE =
+  'Quick question, have you applied this change in production or just in staging environment?'
+const FILENAME = 'a'
 
 const openai = new OpenAIClient()
 
-const contexts = ['Slack', 'GitHub', 'SNS (Social Media)']
-const communications = ['direct', 'indirect', 'polite']
-const recipientsForBusiness = ['manager', 'colleague', 'stranger']
-const recipientsForCasual = ['friend', 'acquaintance', 'stranger']
+const communications = ['neutral', 'casual', 'polite']
 
 run()
 
@@ -35,8 +31,6 @@ async function run() {
       const cleanedSentence = transformedSentence?.result.replace(/^"|"$/g, '')
 
       return {
-        platform: testCase.context,
-        recipient: testCase.recipient,
         style: testCase.communication,
         original: testCase.sentence,
         adjusted: cleanedSentence,
@@ -48,21 +42,10 @@ async function run() {
 }
 
 function generateTestCases(sentence: string) {
-  return contexts.flatMap<Request>((context) => {
-    const recipients =
-      context === 'SNS (Social Media)'
-        ? recipientsForCasual
-        : recipientsForBusiness
-
-    return recipients.flatMap((recipient) =>
-      communications.map((communication) => ({
-        context,
-        recipient,
-        communication,
-        sentence,
-      })),
-    )
-  })
+  return communications.map((communication) => ({
+    communication,
+    sentence,
+  }))
 }
 
 async function saveResultsToFile(data: any) {

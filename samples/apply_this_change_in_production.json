@@ -1,0 +1,20 @@
+[
+  {
+    "platform": "Slack",
+    "style": "neutral",
+    "original": "Quick question, have you applied this change in production or just in staging environment?",
+    "adjusted": "Quick question, have you applied this change in production, or is it just in the staging environment?"
+  },
+  {
+    "platform": "Slack",
+    "style": "casual",
+    "original": "Quick question, have you applied this change in production or just in staging environment?",
+    "adjusted": "Hey! Quick question, have you applied this change in production or just in staging?"
+  },
+  {
+    "platform": "Slack",
+    "style": "polite",
+    "original": "Quick question, have you applied this change in production or just in staging environment?",
+    "adjusted": "Could you let me know if you've applied this change in production or just in the staging environment when you have a moment?"
+  }
+]

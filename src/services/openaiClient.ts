@@ -8,11 +8,7 @@ import {
   TEMPERATURE,
 } from '../config/env.js'
 import { Request, Response } from '../types/openai.js'
-import {
-  promptForGithub,
-  promptForSlack,
-  promptForSNS,
-} from '../config/openAIPrompts.js'
+import { promptForSlack } from '../config/openAIPrompts.js'
 
 export default class OpenAIClient {
   constructor() {
@@ -21,23 +17,10 @@ export default class OpenAIClient {
   }
 
   async convertSentence({
-    context,
-    recipient,
     communication,
     sentence,
   }: Request): Promise<Response> {
-    const prompt = (() => {
-      switch (context) {
-        case 'Slack':
-          return promptForSlack(recipient, communication, sentence)
-        case 'GitHub':
-          return promptForGithub(recipient, communication, sentence)
-        case 'SNS (Social Media)':
-          return promptForSNS(recipient, communication, sentence)
-        default:
-          return ''
-      }
-    })()
+    const prompt = promptForSlack(communication, sentence)
 
     if (!prompt) {
       console.log(chalk.red('\n✖ Error: Invalid Context'))

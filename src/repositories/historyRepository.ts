@@ -5,22 +5,14 @@ export default class HistoryRepository {
   private db = Database.getInstance()
 
   async saveHistory({
-    context,
-    recipient,
     communication,
     original_sentence,
     transformed_sentence,
   }: History) {
     return new Promise<void>((resolve, reject) => {
       this.db.run(
-        `INSERT INTO history (context, recipient, communication, original_sentence, transformed_sentence) VALUES (?, ?, ?, ?, ?)`,
-        [
-          context,
-          recipient,
-          communication,
-          original_sentence,
-          transformed_sentence,
-        ],
+        `INSERT INTO history (communication, original_sentence, transformed_sentence) VALUES (?, ?, ?)`,
+        [communication, original_sentence, transformed_sentence],
         (err) => (err ? reject(err) : resolve()),
       )
     })

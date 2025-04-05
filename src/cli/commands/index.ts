@@ -2,41 +2,10 @@ import { program } from 'commander'
 import mainAction from './actions/main.js'
 import showHistoryAction from './actions/show-history.js'
 import clearHistoryAction from './actions/clear-history.js'
-import setPreferenceAction from './actions/set-preference.js'
-import showPreferenceAction from './actions/show_preference.js'
-import clearPreferenceAction from './actions/clear-preference.js'
 import deleteDatabaseAction from './actions/delete-database.js'
-import convertAction from './actions/convert.js'
+import examplesAction from './actions/examples.js'
 
 const initializeCommands = () => {
-  program
-    .command('preferences')
-    .description('Display the currently saved text adjustment preferences')
-    .action(async () => {
-      await showPreferenceAction()
-    })
-
-  program
-    .command('set-preferences')
-    .description('Set the preferences for text adjustment')
-    .action(async () => {
-      await setPreferenceAction()
-    })
-
-  program
-    .command('clear-preferences')
-    .description('Clear all saved text adjustment preferences')
-    .action(async () => {
-      await clearPreferenceAction()
-    })
-
-  program
-    .command('adjust <text>')
-    .description('Adjust the provided text based on the saved preferences')
-    .action(async (text: string) => {
-      await convertAction(text)
-    })
-
   program
     .command('history')
     .description('Show the history of all adjusted texts')
@@ -53,11 +22,18 @@ const initializeCommands = () => {
 
   program
     .command('delete-database')
-    .description(
-      'Delete the entire database, including preferences and history',
-    )
+    .description('Delete the entire database')
     .action(() => {
       deleteDatabaseAction()
+    })
+
+  program
+    .command('examples')
+    .description(
+      'View and select example sentences for adjusting to a more natural and fluent style',
+    )
+    .action(() => {
+      examplesAction()
     })
 
   program

@@ -14,8 +14,6 @@ vi.mock('../../helpers/spinner.ts')
 
 const mockHistoryData = vi.hoisted(() => [
   {
-    context: 'Slack',
-    recipient: 'manager',
     communication: 'polite',
     original_sentence: 'I need to talk. Do you have time?',
     transformed_sentence:
@@ -44,8 +42,6 @@ describe('applications/historyApplication.ts', () => {
 
   it('should save history correctly', async () => {
     const historyData = {
-      context: 'Slack',
-      recipient: 'manager',
       communication: 'polite',
       original_sentence: 'I need to talk. Do you have time?',
       transformed_sentence:
@@ -66,9 +62,7 @@ describe('applications/historyApplication.ts', () => {
       chalk.bold('\n🪄 Text Adjustment History:\n'),
     )
     expect(console.log).toHaveBeenCalledWith(
-      chalk.cyan(
-        `${1}. ${mockHistoryData[0].context} | ${mockHistoryData[0].recipient} | ${mockHistoryData[0].communication}`,
-      ) +
+      chalk.cyan(`${1}. ${mockHistoryData[0].communication}`) +
         '\n' +
         chalk.gray(`Original: ${mockHistoryData[0].original_sentence}\n`) +
         chalk.white(`Adjusted: ${mockHistoryData[0].transformed_sentence}`) +
