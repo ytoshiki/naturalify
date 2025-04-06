@@ -28,7 +28,7 @@ npm install
 
 To use Naturalify, you need to set your OpenAI API key as an environment variable.
 
-> 💡 Each request consumes approximately **500 tokens**, which costs around **$0.0003** when using the `gpt-4o-mini` model.
+> 💡 Each request consumes approximately **100 tokens**, which costs around **$0.0000825** when using the `gpt-4o-mini` model.
 
 ### Set the `NATURALIFY_API_KEY` Environment Variable
 
