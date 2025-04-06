@@ -1,0 +1,17 @@
+[
+  {
+    "style": "neutral",
+    "original": "Call me as soon as possible when you find this message",
+    "adjusted": "Please call me when you see this message."
+  },
+  {
+    "style": "casual",
+    "original": "Call me as soon as possible when you find this message",
+    "adjusted": "Hey, give me a call ASAP when you see this!"
+  },
+  {
+    "style": "polite",
+    "original": "Call me as soon as possible when you find this message",
+    "adjusted": "Please call me at your earliest convenience when you see this message."
+  }
+]
