@@ -1,8 +1,13 @@
-# Naturalify
+# 🪄 Naturalify
 
 Automatically adjusts your sentence to correct grammar and match the desired communication style.
 
-![Image](https://github.com/user-attachments/assets/f56023f8-0cd0-4a68-bd11-365380ff969a)
+![Image](https://github.com/user-attachments/assets/a687edf7-8fd3-4d45-8d02-08746dd13ee1)
+
+## Features
+
+- Correct grammatical errors
+- Adjust the tone accordingly
 
 ## Installation
 
@@ -85,7 +90,7 @@ Or if you're running locally, run the following command:
 npm run dev
 ```
 
-![Image](https://github.com/user-attachments/assets/f56023f8-0cd0-4a68-bd11-365380ff969a)
+![Image](https://github.com/user-attachments/assets/a687edf7-8fd3-4d45-8d02-08746dd13ee1)
 
 ## Available Commands
 
