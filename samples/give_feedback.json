@@ -1,0 +1,17 @@
+[
+  {
+    "style": "neutral",
+    "original": "I would appreciate if you can give me the feedback",
+    "adjusted": "Could you please provide feedback?"
+  },
+  {
+    "style": "casual",
+    "original": "I would appreciate if you can give me the feedback",
+    "adjusted": "Could you give me some feedback?"
+  },
+  {
+    "style": "polite",
+    "original": "I would appreciate if you can give me the feedback",
+    "adjusted": "I would appreciate it if you could provide feedback."
+  }
+]

@@ -2,16 +2,16 @@
   {
     "style": "neutral",
     "original": "Sorry, I missed that point! I will fix it asap.",
-    "adjusted": "I apologize for missing that point. I will address it promptly."
+    "adjusted": "I missed that point. I will fix it as soon as possible."
   },
   {
     "style": "casual",
     "original": "Sorry, I missed that point! I will fix it asap.",
-    "adjusted": "Oops, I missed that! I'll fix it right away."
+    "adjusted": "Oops, totally missed that! I'll get on it ASAP."
   },
   {
     "style": "polite",
     "original": "Sorry, I missed that point! I will fix it asap.",
-    "adjusted": "I apologize for missing that point! I’ll take care of it when I can."
+    "adjusted": "I apologize for missing that point! I'll address it as soon as possible."
   }
 ]
