@@ -13,7 +13,6 @@ const openai = new OpenAIClient()
 
 const communications = ['neutral', 'casual', 'polite']
 
-
 run()
 
 async function run() {
