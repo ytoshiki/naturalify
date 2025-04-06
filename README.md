@@ -6,8 +6,8 @@ Automatically adjusts your sentence to correct grammar and match the desired com
 
 ## Features
 
-- Correct grammatical errors
-- Adjust the tone accordingly
+- Corrects grammatical errors
+- Adjusts the tone accordingly
 
 ## Installation
 
@@ -96,7 +96,7 @@ npm run dev
 
 | Command                      | Description                                                             |
 | ---------------------------- | ----------------------------------------------------------------------- |
-| `naturalify`                 | Adjust your sentence to be more natural and fluent.                     |
+| `naturalify`                 | Adjust your sentence to make it more natural.                           |
 | `naturalify history`         | Show the history of all adjusted texts.                                 |
 | `naturalify clear-history`   | Clear all the text adjustment history.                                  |
 | `naturalify delete-database` | Delete the entire history database.                                     |
