@@ -30,7 +30,7 @@ const initializeCommands = () => {
   program
     .command('examples')
     .description(
-      'View and select example sentences for adjusting to a more natural and fluent style',
+      'Pick a useful sentence from common work-related communication examples',
     )
     .action(() => {
       examplesAction()
