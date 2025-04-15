@@ -1,5 +1,3 @@
-# THIS IS NOT PUBLISHED YET
-
 # 🪄 Naturalify
 
 Automatically adjusts your sentence to correct grammar and match the desired communication style.
